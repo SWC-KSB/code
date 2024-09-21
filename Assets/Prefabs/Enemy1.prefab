@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5222295331573727914}
   - component: {fileID: -3365454071105762400}
   - component: {fileID: -3444351115358161925}
+  - component: {fileID: 4284625227677059545}
   m_Layer: 11
   m_Name: Enemy1
   m_TagString: Enemy
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1929871745
-  m_SortingLayer: 3
+  m_SortingLayerID: 1514683445
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 18bdadbe69b71654f9ae85cabaae4401, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -115,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 6
 --- !u!95 &5040850736661421331
 Animator:
   serializedVersion: 5
@@ -149,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13455d4319b4390458bcd97f6885b6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftEdge: {fileID: 1382932234508097617, guid: eab7220874532b0429b4d3179b950739, type: 3}
-  rightEdge: {fileID: 764828811056960260, guid: f70a357d6ecb3f34990e81bb84b8edac, type: 3}
+  player: {fileID: 8668494829982762984, guid: 33272fedc76f2674aa0b28fa99835e61, type: 3}
   enemy: {fileID: 3337953893853595443}
   speed: 1
   idleDuration: 1
+  followRange: 5
   anim: {fileID: 5040850736661421331}
 --- !u!61 &-3365454071105762400
 BoxCollider2D:
@@ -215,3 +216,24 @@ MonoBehaviour:
   InitialHealth: 0
   iFrameDuration: 0
   numberOfFlashes: 0
+--- !u!114 &4284625227677059545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342356302664896246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fb3e7f3a39c54458f2b202fc37352b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 0
+  damage: 1
+  range: 1
+  colliderDistance: 4
+  boxCollider: {fileID: -3365454071105762400}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  damageAmount: 5
