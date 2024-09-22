@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerDashAttack : MonoBehaviour
 {
     public float dashSpeed = 20f;         // 대쉬 속도
     public float dashDuration = 0.2f;     // 대쉬 지속 시간
     public float dashCooldown = 1f;       // 대쉬 쿨타임
-    public LayerMask enemyLayer;          // 적 Layer 설정
     public float attackRange = 1f;        // 공격 범위
     public int attackDamage = 10;         // 공격 데미지
 
@@ -20,6 +18,7 @@ public class PlayerDashAttack : MonoBehaviour
     private Animator animator;            // 애니메이터 추가
     public GameObject Player;
     PlayerMovement PlayerMovement;
+
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
@@ -32,6 +31,7 @@ public class PlayerDashAttack : MonoBehaviour
         // 대쉬를 위한 입력 처리
         if (Input.GetKeyDown(KeyCode.Q) && dashCooldownTime <= 0)
         {
+            Debug.Log("Dash Input detected! Starting Dash...");
             StartDash();
         }
 
@@ -48,11 +48,19 @@ public class PlayerDashAttack : MonoBehaviour
 
     private void StartDash()
     {
+        // 대쉬 방향이 0일 경우 플레이어의 바라보는 방향으로 대쉬
+        dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+        if (dashDirection == Vector2.zero)
+        {
+            dashDirection = new Vector2(transform.localScale.x, 0);  // 기본적으로 플레이어가 바라보는 방향으로 설정
+        }
+
         // 대쉬 시작 애니메이션 트리거 발동
+        Debug.Log("Dash animation triggered. Direction: " + dashDirection);
         animator.SetTrigger("DashAttack");
 
         isDashing = true;
-        dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
     }
@@ -61,6 +69,7 @@ public class PlayerDashAttack : MonoBehaviour
     {
         if (dashTime > 0)
         {
+            Debug.Log("Dashing with velocity: " + dashDirection * dashSpeed);  // 대쉬 속도 확인
             rb.velocity = dashDirection * dashSpeed;
             dashTime -= Time.deltaTime;
 
@@ -75,38 +84,68 @@ public class PlayerDashAttack : MonoBehaviour
 
     private void StopDash()
     {
-        
-
         isDashing = false;
         rb.velocity = Vector2.zero;
+        Debug.Log("Dash finished.");
     }
 
     private void PerformDashAttack()
     {
-        // 대쉬 범위 안에 있는 적을 찾음
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, attackRange, dashDirection, attackRange, enemyLayer);
+        Debug.Log("Performing dash attack...");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (RaycastHit2D hit in hits)
+        // 감지된 적 오브젝트가 없는 경우
+        if (enemies.Length == 0)
         {
-            if (hit.collider != null)
+            Debug.LogWarning("No enemies found with the 'Enemy' tag.");
+            return;
+        }
+
+        // 각 적 오브젝트에 대해 범위 확인
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy == null)
             {
-                // 적에게 데미지를 가함
-                Monster_Health enemy = hit.collider.GetComponent<Monster_Health>();
-                if (enemy != null)
+                Debug.LogWarning("Enemy is null.");
+                continue; // 만약 적이 null이면 넘어감
+            }
+
+            // 적이 범위 안에 있는지 확인
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            Debug.Log("Distance to " + enemy.name + ": " + distanceToEnemy);
+
+            if (distanceToEnemy <= attackRange)
+            {
+                Debug.Log("Detected enemy: " + enemy.name);
+
+                // 적에게 데미지를 가하기
+                Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
+                if (enemyHealth != null)
                 {
-                    enemy.TakeDamage(attackDamage);
+                    Debug.Log("Applying damage to enemy: " + enemy.name);
+                    enemyHealth.TakeDamage(attackDamage);
                 }
+                else
+                {
+                    Debug.LogWarning("Enemy does not have Enemy_Health component: " + enemy.name);
+                }
+            }
+            else
+            {
+                Debug.Log(enemy.name + " is out of range.");
             }
         }
     }
 
+    // Dash_move 함수 유지
     private void Dash_move()
     {
         float _pos = Player.transform.position.x;
-        if(_pos <= 0 && PlayerMovement.key_==false)
+        if (_pos <= 0 && PlayerMovement.key_ == false)
         {
             Player.transform.position = new Vector2(-8f, Player.transform.position.y);
-        }else if(PlayerMovement.key_ == false)
+        }
+        else if (PlayerMovement.key_ == false)
         {
             _pos -= 7.7f;
             Player.transform.position = new Vector2(_pos, Player.transform.position.y);
@@ -117,5 +156,11 @@ public class PlayerDashAttack : MonoBehaviour
             Player.transform.position = new Vector2(_pos, Player.transform.position.y);
         }
     }
-}
 
+    // 추가된 디버깅을 위한 Gizmo
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);  // 대쉬 공격 범위 시각화
+    }
+}

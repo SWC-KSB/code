@@ -25,7 +25,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        // WASD 키 입력 처리
+        horizontalInput = 0; // 기본적으로 입력 값 초기화
+        if (Input.GetKey(KeyCode.A))
+        {
+            horizontalInput = -1; // 왼쪽으로 이동
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            horizontalInput = 1; // 오른쪽으로 이동
+        }
 
 
         // 캐릭터 좌우 반전

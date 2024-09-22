@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 2423942586280795260}
   - component: {fileID: 9206069870713125902}
   - component: {fileID: 573127771929134773}
-  - component: {fileID: 9049328806156168350}
   - component: {fileID: -5711830856566139186}
+  - component: {fileID: 4331807054645706540}
   m_Layer: 11
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 473363312952256149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.200357, y: -1, z: -9.95526}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 1.9746763, y: -3.077875, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13455d4319b4390458bcd97f6885b6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8668494829982762984, guid: 33272fedc76f2674aa0b28fa99835e61, type: 3}
+  player: {fileID: 2005982968937870200, guid: 33272fedc76f2674aa0b28fa99835e61, type: 3}
   enemy: {fileID: 6974950926423236990}
   speed: 0
   idleDuration: 0
@@ -223,19 +223,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   damageAmount: 5
---- !u!114 &9049328806156168350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473363312952256149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2149af12a35d27b44a2206646ddce088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!114 &-5711830856566139186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +235,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae445a9520258e448dfa8e5da4ac47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 0
-  iFrameDuration: 0
-  numberOfFlashes: 0
+  InitialHealth: 10
+  iFrameDuration: 1
+  numberOfFlashes: 1
+--- !u!114 &4331807054645706540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473363312952256149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37f1debcb93d4e4fafb582cc9b8d56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialHealth: 10
+  numberOfFlashes: 1
+  flashDuration: 0.1
