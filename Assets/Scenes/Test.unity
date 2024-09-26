@@ -496,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &458463094
 Transform:
   m_ObjectHideFlags: 0
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   attackMoveSpeed: 20
   attackMoveDirection: {x: -1, y: 5}
   attackPlayerSpeed: 25
-  player: {fileID: 0}
+  player: {fileID: 1254948388}
   GroundCheckUp: {fileID: 591886580}
   GroundCheckDown: {fileID: 1957010307}
   GroundCheckWall: {fileID: 1431272369}
@@ -1534,7 +1534,6 @@ MonoBehaviour:
   InitialHealth: 100
   iFrameDuration: 1
   numberOfFlashes: 1
-  boss: {fileID: 0}
 --- !u!114 &1254948379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,9 +1548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   damage: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 2048
+  cooldownTime: 2
   animator: {fileID: 1254948383}
 --- !u!114 &1254948380
 MonoBehaviour:
@@ -1568,9 +1565,6 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0
   dashCooldown: 5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   attackRange: 1
   attackDamage: 50
   Player: {fileID: 1254948377}
@@ -1994,7 +1988,6 @@ MonoBehaviour:
   InitialHealth: 200
   iFrameDuration: 0
   numberOfFlashes: 0
-  boss: {fileID: 1313573586}
 --- !u!114 &1313573593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2472,7 +2465,7 @@ MonoBehaviour:
   attackMoveSpeed: 20
   attackMoveDirection: {x: -1, y: 5}
   attackPlayerSpeed: 25
-  player: {fileID: 0}
+  player: {fileID: 1254948388}
   GroundCheckUp: {fileID: 123226891}
   GroundCheckDown: {fileID: 694433646}
   GroundCheckWall: {fileID: 57852709}
@@ -2884,6 +2877,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156656754666232949, guid: 998d049a14d0f184fa614163e9a4e5e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1156656754666232949, guid: 998d049a14d0f184fa614163e9a4e5e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.77
