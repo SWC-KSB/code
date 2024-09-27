@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    private SpriteRenderer _spriteRenderer; // 깜박이는 효과를 위한 스프라이트 렌더러
+    private bool isInvincible = false; // 무적 상태 여부
+    [SerializeField] private float invincibleDuration = 2f; // 무적 지속 시간
+    [SerializeField] private float blinkFrequency = 0.1f; // 깜박이는 주기
     private float wallJumpCheck;
     private float horizontalInput;
     public bool key_;
@@ -21,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>(); // 스프라이트 렌더러 초기화
     }
 
     private void FixedUpdate()
@@ -71,14 +75,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             wallJumpCheck += Time.deltaTime;
-
-        // 플레이어가 적 위에 올라가는 것 방지
-        PreventClimbingOnEnemy();
     }
 
     private void Jump()
     {
-        Debug.Log("g");
         if (isGrounded())
         {
             _rigid.velocity = new Vector2(_rigid.velocity.x, jumpPower);
@@ -115,19 +115,38 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    // 적 위로 올라가지 않게 하는 메서드 (태그 사용)
-    private void PreventClimbingOnEnemy()
+    // 적과 충돌하면 깜박이면서 적을 통과하는 메서드
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2f);
-
-        // 적과 충돌을 감지하면 플레이어 위치를 조정
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && !isInvincible)
         {
-            transform.position = new Vector3(transform.position.x, hit.collider.bounds.max.y + 0.5f, transform.position.z);
+            StartCoroutine(BlinkAndPassThrough());
         }
     }
 
-    // 공격 할 수 있는지 없는지 
+    // 깜박이며 적을 통과하는 코루틴
+    private IEnumerator BlinkAndPassThrough()
+    {
+        isInvincible = true;
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true); // 적과의 충돌 비활성화
+
+        float elapsedTime = 0f;
+        while (elapsedTime < invincibleDuration)
+        {
+            // 깜박이기: 스프라이트의 알파 값 조절
+            _spriteRenderer.color = new Color(1, 1, 1, 0.2f); // 투명도 낮춤
+            yield return new WaitForSeconds(blinkFrequency);
+            _spriteRenderer.color = new Color(1, 1, 1, 1f); // 원래대로
+            yield return new WaitForSeconds(blinkFrequency);
+
+            elapsedTime += blinkFrequency * 2;
+        }
+
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false); // 적과의 충돌 다시 활성화
+        isInvincible = false;
+    }
+
+    // 공격 할 수 있는지 없는지 체크
     public bool canAtk()
     {
         return horizontalInput == 0 && isGrounded() && !OnWall();
