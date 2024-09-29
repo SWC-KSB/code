@@ -32,10 +32,9 @@ public class HackingAttackPrefab : MonoBehaviour
         // "Enemy" 태그를 가진 모든 적 오브젝트를 찾음
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        // 감지된 적 오브젝트가 없는 경우
+        // 감지된 적 오브젝트가 없는 경우 처리
         if (enemies.Length == 0)
         {
-            Debug.LogWarning("No enemies found with the 'Enemy' tag.");
             return;
         }
 
@@ -51,23 +50,12 @@ public class HackingAttackPrefab : MonoBehaviour
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy <= radius)
             {
-                Debug.Log("Detected enemy: " + enemy.name);
-
                 // 적에게 데미지를 가하기
                 Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
                 if (enemyHealth != null)
                 {
-                    Debug.Log("Applying damage to enemy: " + enemy.name);
                     enemyHealth.TakeDamage(damage);
                 }
-                else
-                {
-                    Debug.LogWarning("Enemy does not have Enemy_Health component: " + enemy.name);
-                }
-            }
-            else
-            {
-                Debug.Log(enemy.name + " is out of range.");
             }
         }
     }
