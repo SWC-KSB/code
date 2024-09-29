@@ -31,7 +31,6 @@ public class PlayerDashAttack : MonoBehaviour
         // 대쉬를 위한 입력 처리
         if (Input.GetKeyDown(KeyCode.Q) && dashCooldownTime <= 0)
         {
-            Debug.Log("Dash Input detected! Starting Dash...");
             StartDash();
         }
 
@@ -57,7 +56,6 @@ public class PlayerDashAttack : MonoBehaviour
         }
 
         // 대쉬 시작 애니메이션 트리거 발동
-        Debug.Log("Dash animation triggered. Direction: " + dashDirection);
         animator.SetTrigger("DashAttack");
 
         isDashing = true;
@@ -69,7 +67,6 @@ public class PlayerDashAttack : MonoBehaviour
     {
         if (dashTime > 0)
         {
-            Debug.Log("Dashing with velocity: " + dashDirection * dashSpeed);  // 대쉬 속도 확인
             rb.velocity = dashDirection * dashSpeed;
             dashTime -= Time.deltaTime;
 
@@ -86,18 +83,15 @@ public class PlayerDashAttack : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = Vector2.zero;
-        Debug.Log("Dash finished.");
     }
 
     private void PerformDashAttack()
     {
-        Debug.Log("Performing dash attack...");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        // 감지된 적 오브젝트가 없는 경우
+        // 감지된 적 오브젝트가 없는 경우 처리
         if (enemies.Length == 0)
         {
-            Debug.LogWarning("No enemies found with the 'Enemy' tag.");
             return;
         }
 
@@ -106,33 +100,20 @@ public class PlayerDashAttack : MonoBehaviour
         {
             if (enemy == null)
             {
-                Debug.LogWarning("Enemy is null.");
                 continue; // 만약 적이 null이면 넘어감
             }
 
             // 적이 범위 안에 있는지 확인
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            Debug.Log("Distance to " + enemy.name + ": " + distanceToEnemy);
 
             if (distanceToEnemy <= attackRange)
             {
-                Debug.Log("Detected enemy: " + enemy.name);
-
                 // 적에게 데미지를 가하기
                 Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
                 if (enemyHealth != null)
                 {
-                    Debug.Log("Applying damage to enemy: " + enemy.name);
                     enemyHealth.TakeDamage(attackDamage);
                 }
-                else
-                {
-                    Debug.LogWarning("Enemy does not have Enemy_Health component: " + enemy.name);
-                }
-            }
-            else
-            {
-                Debug.Log(enemy.name + " is out of range.");
             }
         }
     }
