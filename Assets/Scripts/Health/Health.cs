@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     [Header("체력")]
     [SerializeField] public float InitialHealth;
-    public float currentHealth { get; private set; }
+    public float currentHealth { get; set; }
     private Animator anim;
     private bool dead;
 

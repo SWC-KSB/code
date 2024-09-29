@@ -42,7 +42,7 @@ public class Monster_Health : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("Die");
-                GetComponent<EnemyPatrol>().enabled = false;
+                GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
             }
         }
