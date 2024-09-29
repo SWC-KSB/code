@@ -7,7 +7,6 @@ public class Enemy_Health : MonoBehaviour
     [Header("체력")]
     [SerializeField] public float InitialHealth;
     public float currentHealth { get; private set; }
-    private Animator anim;
     private bool dead;
 
     [Header("Hit Effect")]
@@ -19,25 +18,12 @@ public class Enemy_Health : MonoBehaviour
     {
         currentHealth = InitialHealth;
         spriteRender = GetComponent<SpriteRenderer>();
-
-        // Animator 초기화
-        anim = GetComponent<Animator>();
-        if (anim == null)
-        {
-            Debug.LogWarning("Animator component not found on this game object.");
-        }
     }
 
     // 데미지 받는 함수
     public void TakeDamage(float damage)
     {
         Debug.Log("TakeDamage called with damage: " + damage);
-
-        // Animator가 null이 아닐 때만 애니메이션 트리거
-        if (anim != null)
-        {
-            anim.SetTrigger("Hurt");
-        }
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, InitialHealth);
 
@@ -70,12 +56,7 @@ public class Enemy_Health : MonoBehaviour
     // 죽는 함수
     private IEnumerator Die()
     {
-        // 적이 죽을 때 애니메이션이 있을 경우
-        if (anim != null)
-        {
-            anim.SetTrigger("Die");
-        }
-
+        // 적이 죽을 때 애니메이션 없이 잠시 대기 후 파괴
         yield return new WaitForSeconds(0.5f);  // 잠시 대기 후 오브젝트 파괴
         Destroy(gameObject); // 오브젝트 삭제
     }
