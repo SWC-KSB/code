@@ -17,8 +17,9 @@ public class Enemy_Healthbar : MonoBehaviour
     // 체력바 업데이트 메서드
     public void UpdateHealthBar(float currentHealth)
     {
-        Debug.Log("Updating Health Bar: " + currentHealth);  // 로그로 확인
+        Debug.Log("Before updating, healthBarSlider.value: " + healthBarSlider.value);
         healthBarSlider.value = currentHealth;
+        Debug.Log("After updating, healthBarSlider.value: " + healthBarSlider.value);
     }
 
     // 체력바 보이기
@@ -33,11 +34,5 @@ public class Enemy_Healthbar : MonoBehaviour
         healthBarSlider.gameObject.SetActive(false);
     }
 
-    // 임시 테스트를 위한 Start() 함수 추가
-    void Start()
-    {
-        // 체력바의 값을 절반으로 설정하여 테스트
-        healthBarSlider.value = healthBarSlider.maxValue / 2;
-        Debug.Log("Test: Set healthBarSlider.value to " + healthBarSlider.value);
-    }
+    
 }

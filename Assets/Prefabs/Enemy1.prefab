@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4284625227677059545}
   - component: {fileID: 225112109404805238}
   - component: {fileID: -387666514279851917}
-  - component: {fileID: 5100599014649891935}
+  - component: {fileID: 6172689134428606104}
   m_Layer: 11
   m_Name: Enemy1
   m_TagString: Enemy
@@ -34,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 1342356302664896246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.320604, y: -2.8321204, z: 0}
-  m_LocalScale: {x: -0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: -6.740664, y: -2.8204112, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7578753476209504294}
@@ -232,7 +232,7 @@ MonoBehaviour:
   InitialHealth: 10
   numberOfFlashes: 1
   flashDuration: 1
-  healthBar: {fileID: 5100599014649891935}
+  healthBar: {fileID: 6172689134428606104}
 --- !u!114 &-387666514279851917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
     m_Bits: 1024
   boxCollider: {fileID: -3365454071105762400}
   detectionAnimator: {fileID: 0}
---- !u!114 &5100599014649891935
+--- !u!114 &6172689134428606104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,8 +338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1, y: 0.1}
-  m_SizeDelta: {x: -2, y: -0.2}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5081936272779512864
 CanvasRenderer:
@@ -363,13 +363,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 319283462, guid: 79ebb63572431f649bbdc1166791c8bb, type: 3}
+  m_Sprite: {fileID: 1602433257, guid: 79ebb63572431f649bbdc1166791c8bb, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1602433257, guid: 79ebb63572431f649bbdc1166791c8bb, type: 3}
+  m_Sprite: {fileID: 319283462, guid: 79ebb63572431f649bbdc1166791c8bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

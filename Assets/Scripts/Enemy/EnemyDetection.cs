@@ -113,7 +113,7 @@ public class EnemyDetection : MonoBehaviour
 
             // Animator의 파라미터 "DetectionLevel"에 발각도 값을 전달
             detectionAnimator.SetFloat("DetectionLevel", detectionRatio);
-            Debug.Log("Updating UI animation with detectionRatio: " + detectionRatio);
+            
         }
         else
         {
