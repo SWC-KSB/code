@@ -29,12 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.z != 0)
-        {
-            Vector3 newPosition = transform.position;
-            newPosition.z = 0;
-            transform.position = newPosition;
-        }
+        // 플레이어 회전 방지
+        Vector3 currentRotation = transform.eulerAngles;
+        currentRotation.z = 0f;
+        transform.eulerAngles = currentRotation;
 
         // WASD 키 입력 처리
         horizontalInput = 0; // 기본적으로 입력 값 초기화

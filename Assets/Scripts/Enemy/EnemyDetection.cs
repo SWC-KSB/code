@@ -72,13 +72,13 @@ public class EnemyDetection : MonoBehaviour
         {
             detectionLevel += detectionSpeed * Time.deltaTime;
             playerDetected = true;  // 플레이어가 감지됨
-            Debug.Log("Player detected. Detection level increasing: " + detectionLevel);
+            
         }
         else
         {
             detectionLevel -= detectionDecreaseSpeed * Time.deltaTime;
             playerDetected = false;  // 플레이어 감지 해제
-            Debug.Log("Player not detected. Detection level decreasing: " + detectionLevel);
+            
         }
 
         detectionLevel = Mathf.Clamp(detectionLevel, 0, maxDetection);  // 발각도 값 제한
