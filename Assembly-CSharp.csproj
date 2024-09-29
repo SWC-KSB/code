@@ -66,21 +66,25 @@
     <Compile Include="Assets\Scripts\Skill\DashAttack.cs" />
     <Compile Include="Assets\Scripts\Health\CollectableHeart.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key.cs" />
+    <Compile Include="Assets\KDG\Boss\BossStateMachine.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key1.cs" />
+    <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
     <Compile Include="Assets\Scripts\Skill\HackingAttack.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_movement.cs" />
+    <Compile Include="Assets\idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Sideway.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\BossStateMachine.cs" />
+    <Compile Include="Assets\KDG\Boss\Boss_HeartBar.cs" />
+    <Compile Include="Assets\KDG\KDG_Resources\Boss_AnimatiorManager.cs" />
     <Compile Include="Assets\Scripts\Health\Healthbar.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\Health\Monster_Health.cs" />
     <Compile Include="Assets\Scripts\Camera\Camera Controller.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Spawner.cs" />
+    <Compile Include="Assets\KDG\Boss\Boss_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\Boss_2.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

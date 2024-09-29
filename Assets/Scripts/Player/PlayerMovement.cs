@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     public bool key_;
 
+
     private void Awake() 
     {
         _rigid = GetComponent<Rigidbody2D>();
@@ -73,6 +74,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             wallJumpCheck += Time.deltaTime;
+
+        // Z 회전이 변경되면 0으로 되돌리기
+        if (transform.rotation.z != 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     private void Jump()
