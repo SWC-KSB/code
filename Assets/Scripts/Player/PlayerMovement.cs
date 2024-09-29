@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     public bool key_;
 
-
-    private void Awake() 
+    private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
@@ -36,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInput = 1; // 오른쪽으로 이동
         }
-
 
         // 캐릭터 좌우 반전
         if (horizontalInput > 0.01f)
@@ -70,16 +68,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 Jump();
             }
-
         }
         else
             wallJumpCheck += Time.deltaTime;
 
-        // Z 회전이 변경되면 0으로 되돌리기
-        if (transform.rotation.z != 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        // 플레이어가 적 위에 올라가는 것 방지
+        PreventClimbingOnEnemy();
     }
 
     private void Jump()
@@ -87,16 +81,13 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("g");
         if (isGrounded())
         {
-            
             _rigid.velocity = new Vector2(_rigid.velocity.x, jumpPower);
             _anim.SetTrigger("Jump");
         }
         else if (OnWall() && !isGrounded())
         {
-            if(horizontalInput == 0)
+            if (horizontalInput == 0)
             {
-                // Mathf.Sign(float f) : f의 부호를 반환하는 함수
-                // 0이나 양수 1을 음수일때는 -1 
                 _rigid.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
                 transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x),
                     transform.localScale.y, transform.localScale.z);
@@ -124,13 +115,21 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
+    // 적 위로 올라가지 않게 하는 메서드 (태그 사용)
+    private void PreventClimbingOnEnemy()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2f);
+
+        // 적과 충돌을 감지하면 플레이어 위치를 조정
+        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        {
+            transform.position = new Vector3(transform.position.x, hit.collider.bounds.max.y + 0.5f, transform.position.z);
+        }
+    }
+
     // 공격 할 수 있는지 없는지 
     public bool canAtk()
     {
         return horizontalInput == 0 && isGrounded() && !OnWall();
     }
 }
-
-
-
-
