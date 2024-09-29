@@ -95,7 +95,7 @@ public class Boss_Pattern_3 : MonoBehaviour
                 break;
         }
 
-        if (Vector3.Distance(transform.position, player.position) < 1f)
+        if (Vector3.Distance(transform.position, player.position) < 2f)
         {
             player.GetComponent<Health>().TakeDamage(5f);
         }

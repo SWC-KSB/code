@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ab608b8a7db57414bbc199790e6dc41d
+guid: 1e0ba3a0413a0a5429acf02da6a0ca20
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_Platform_Prefab
+      name: KDG_Wall1
       rect:
         serializedVersion: 2
-        x: 125
-        y: 466
-        width: 469
-        height: 210
+        x: 126
+        y: 159
+        width: 129
+        height: 381
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb79a0bedfea7db449ef1e1184517a14
-      internalID: 1342101085
+      spriteID: cc21b99c436510f40aa65728ae889a3f
+      internalID: -1777373662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KDG_Ground1
+      name: KDG_Wall2
       rect:
         serializedVersion: 2
-        x: 123
-        y: 225
-        width: 240
-        height: 211
+        x: 280
+        y: 152
+        width: 87
+        height: 361
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: feece4fa98d57e04597252c6d8361689
-      internalID: 1551503174
+      spriteID: 2f44fe51a73713646a8d540416bacf58
+      internalID: -1265568065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KDG_Ground2
+      name: KDG_Wall3
       rect:
         serializedVersion: 2
-        x: 385
-        y: 320
-        width: 239
-        height: 110
+        x: 426
+        y: 301
+        width: 58
+        height: 218
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da9d29d53a9929742b4d33d43ae8171d
-      internalID: -2036906829
+      spriteID: 93392f2f1d9cb6948be3f43628abaddb
+      internalID: -2038420882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KDG_Ground3
+      name: KDG_Wall4
       rect:
         serializedVersion: 2
-        x: 383
-        y: 244
-        width: 266
-        height: 66
+        x: 529
+        y: 59
+        width: 66
+        height: 617
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,29 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17a515507326580438179d295fa0702d
-      internalID: -1209239944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KDG_Ground4
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 104
-        width: 552
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 618e9bad60453544da4da8a83eca1ee3
-      internalID: -937011470
+      spriteID: 736fe5eac7b9e284eac0e383597926ea
+      internalID: 711440308
       vertices: []
       indices: 
       edges: []
@@ -225,11 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss_Platform_Prefab: 1342101085
-      KDG_Ground1: 1551503174
-      KDG_Ground2: -2036906829
-      KDG_Ground3: -1209239944
-      KDG_Ground4: -937011470
+      KDG_Wall1: -1777373662
+      KDG_Wall2: -1265568065
+      KDG_Wall3: -2038420882
+      KDG_Wall4: 711440308
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
