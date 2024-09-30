@@ -303,10 +303,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00329b6db659e64093d741093b3a24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   _Player: {fileID: 1254948388}
-  aheadDistance: 2
-  cameraSpeed: 5
+  aheadDistance: 0
+  cameraSpeed: 0
 --- !u!1 &126150181
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,8 +815,8 @@ Transform:
   m_GameObject: {fileID: 467270022}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.148248, y: 3.89, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -4.148248, y: 6.3, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -861,11 +861,11 @@ PrefabInstance:
       objectReference: {fileID: 1254948388}
     - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
       propertyPath: idleMoveSpeed
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
       propertyPath: attackMoveSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
       propertyPath: groundCheckRadius
@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae445a9520258e448dfa8e5da4ac47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 100
+  InitialHealth: 500
   iFrameDuration: 1
   numberOfFlashes: 1
 --- !u!114 &1254948379
@@ -3583,7 +3583,11 @@ PrefabInstance:
       objectReference: {fileID: 1254948388}
     - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
       propertyPath: idleMoveSpeed
-      value: 15
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
+      propertyPath: attackMoveSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2613608490422999374, guid: 32f869ec7f525cc48af569687bf8b36d, type: 3}
       propertyPath: groundCheckRadius
@@ -3736,7 +3740,7 @@ PrefabInstance:
       objectReference: {fileID: 1254948388}
     - target: {fileID: 1786340471292468362, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
       propertyPath: idleMoveSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1786340471292468362, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
       propertyPath: groundCheckRadius

@@ -572,29 +572,34 @@ public class BossStateMachine : MonoBehaviour
 
         Debug.Log($"Pattern 4: Execution count {pattern4Count + 1}");
 
-        Rigidbody2D bossRB = GetComponent<Rigidbody2D>();
-        bossRB.gravityScale = 1;
+        yield return new WaitForSeconds(1f);
 
         float initialY = player.position.y;
         float moveDirection = Random.Range(0f, 1f) < 0.5f ? 1f : -1f; // 1/2 확률로 방향 결정
         float minX = player.position.x - 20f; // 플레이어의 X 위치 기준으로 이동 범위 설정
         float maxX = player.position.x + 20f;
 
-        yield return new WaitForSeconds(3f);
 
-        for (float x = (moveDirection > 0 ? minX : maxX);
+        // 시작 위치로 이동
+        float startX = (moveDirection > 0 ? minX : maxX);
+        transform.position = new Vector3(startX, initialY, transform.position.z);
+
+        // 0.5초 대기
+        yield return new WaitForSeconds(0.7f);
+
+        // 이동 시작
+        for (float x = startX;
              (moveDirection > 0 ? x <= maxX : x >= minX);
-             x += moveSpeed * 8 * Time.deltaTime * moveDirection)
+             x += moveSpeed * 11 * Time.deltaTime * moveDirection)
         {
             transform.position = new Vector3(x, initialY, transform.position.z);
 
-            if (Vector3.Distance(transform.position, player.position) <= 1f)
+            if (Vector3.Distance(transform.position, player.position) <= 2.1f)
             {
                 player.GetComponent<Health>().TakeDamage(5f);
             }
             yield return null;
         }
-
         yield return new WaitForSeconds(3f);
 
         // 패턴 실행 횟수 증가
@@ -604,6 +609,11 @@ public class BossStateMachine : MonoBehaviour
         if (Random.Range(0f, 1f) < 0.5f)
         {
             yield return StartCoroutine(Pattern4()); // 재귀 호출로 다시 실행
+        }
+        else
+        {
+            pattern4Count = 0;
+            yield return null; 
         }
     }
 
