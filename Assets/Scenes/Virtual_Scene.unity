@@ -1437,6 +1437,7 @@ MonoBehaviour:
   _Player: {fileID: 8924187006322184031}
   aheadDistance: 2
   cameraSpeed: 0.5
+  yBoundary: 0
 --- !u!1 &546057663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,9 +4989,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
-  invincibleDuration: 0.5
-  blinkFrequency: 0.1
   key_: 0
+  maxJumpCount: 1
 --- !u!212 &1565178739256735847
 SpriteRenderer:
   m_ObjectHideFlags: 0
