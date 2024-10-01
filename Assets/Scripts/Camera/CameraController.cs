@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // > 룸 카메라
     // 카메라 속도
     [SerializeField] private float speed;
     private float currentPosX;
@@ -16,20 +15,29 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float cameraSpeed;
     private float lookAhead;
 
+    // 카메라의 Y축 범위
+    [SerializeField] private float yBoundary; // Y축 범위 (예: 10)
+    private float originalY; // 카메라의 원래 Y축 위치
+
+    private void Start()
+    {
+        // 카메라의 원래 Y축 위치 저장
+        originalY = transform.position.y;
+    }
+
     private void Update()
     {
-        // SmoothDamp(Vector3 current, Vector3 target, ref Vector3 velocity, float smoothtime)
-        // 부드러운 이동을 손쉽게 하기 위해서 활용되는 함수
-        //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX,
-        //    transform.position.y, transform.position.z),ref velocity, speed);
+        // 플레이어의 Y축 위치 체크
+        if (_Player.position.y > originalY + yBoundary)
+        {
+            // 플레이어가 Y축 범위를 초과하면 카메라를 위로 이동
+            transform.position = new Vector3(transform.position.x, originalY + (_Player.position.y - yBoundary), transform.position.z);
+        }
 
-        // 플레이어
-        transform.position = new Vector3(_Player.position.x + lookAhead, transform.position.y,
-            transform.position.z);
+        // 카메라 X축 움직임
+        transform.position = new Vector3(_Player.position.x + lookAhead, transform.position.y, transform.position.z);
 
-        lookAhead = Mathf.Lerp(lookAhead, (aheadDistance * _Player.localScale.x),
-            cameraSpeed * Time.deltaTime);
-
+        lookAhead = Mathf.Lerp(lookAhead, (aheadDistance * _Player.localScale.x), cameraSpeed * Time.deltaTime);
     }
 
     // 새로운 방으로 이동하기
