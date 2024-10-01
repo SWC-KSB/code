@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Object\laser.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons.cs" />
     <Compile Include="Assets\Scripts\Skill\DashAttack.cs" />
+    <Compile Include="Assets\Scripts\Skill\Player_BaseAttack.cs" />
     <Compile Include="Assets\Scripts\Health\CollectableHeart.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key.cs" />
     <Compile Include="Assets\KDG\Boss\BossStateMachine.cs" />

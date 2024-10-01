@@ -5062,6 +5062,7 @@ GameObject:
   - component: {fileID: 2853084463217874615}
   - component: {fileID: 4691374537944027675}
   - component: {fileID: 9110771034994526782}
+  - component: {fileID: 9110771034994526783}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5300,6 +5301,25 @@ MonoBehaviour:
   damage: 7
   cooldownTime: 5
   animator: {fileID: 952167114893643018}
+--- !u!114 &9110771034994526783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937785866565865195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ae18874be16a94594035f11bb4e16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 952167114893643018}
+  attackCooldown: 0
+  attackRange: 1
+  attackDamage: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
