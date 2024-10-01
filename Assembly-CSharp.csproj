@@ -79,6 +79,7 @@
     <Compile Include="Assets\idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Sideway.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
+    <Compile Include="Assets\Scripts\GrandFather\GrandfatherMovement.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_HeartBar.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_AnimatiorManager.cs" />
     <Compile Include="Assets\Scripts\Health\Healthbar.cs" />
@@ -88,11 +89,13 @@
     <Compile Include="Assets\Scripts\Camera\Camera Controller.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Spawner.cs" />
+    <Compile Include="Assets\Scripts\Story\BlackOut.cs" />
     <Compile Include="Assets\Scripts\Object\switch.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
     <Compile Include="Assets\Scripts\Object\disappearObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Story\Portal.cs" />
     <Compile Include="Assets\Scripts\Object\jumpBlock.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy_Healthbar.cs" />
   </ItemGroup>
@@ -973,6 +976,10 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
@@ -1219,6 +1226,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
