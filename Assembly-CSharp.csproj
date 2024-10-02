@@ -63,14 +63,16 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyPatrol.cs" />
     <Compile Include="Assets\Scripts\Object\laser.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Attack1.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons.cs" />
     <Compile Include="Assets\Scripts\Skill\DashAttack.cs" />
+    <Compile Include="Assets\Scripts\Skill\Player_BaseAttack.cs" />
     <Compile Include="Assets\Scripts\Health\CollectableHeart.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key.cs" />
     <Compile Include="Assets\KDG\Boss\BossStateMachine.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key1.cs" />
-    <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
     <Compile Include="Assets\Scripts\UI\DitectionUI.cs" />
+    <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
     <Compile Include="Assets\Scripts\Skill\HackingAttack.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Object\moveObject.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Assets\idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Sideway.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
+    <Compile Include="Assets\Scripts\GrandFather\GrandfatherMovement.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_HeartBar.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_AnimatiorManager.cs" />
     <Compile Include="Assets\Scripts\Health\Healthbar.cs" />
@@ -87,11 +90,14 @@
     <Compile Include="Assets\Scripts\Camera\Camera Controller.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Spawner.cs" />
+    <Compile Include="Assets\Scripts\Story\BlackOut.cs" />
     <Compile Include="Assets\Scripts\Object\switch.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
+    <Compile Include="Assets\Scripts\first_Scene\Buttons_retry.cs" />
     <Compile Include="Assets\Scripts\Object\disappearObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Story\Portal.cs" />
     <Compile Include="Assets\Scripts\Object\jumpBlock.cs" />
     <Compile Include="Assets\Scripts\UI\Story_Camera.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy_Healthbar.cs" />
@@ -103,6 +109,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Resources\Resource\Dragon Warrior Files\Read Me.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -117,6 +124,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\glitch.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +482,26 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.GradleProject">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -976,6 +1004,10 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
@@ -1222,6 +1254,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
