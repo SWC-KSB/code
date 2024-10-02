@@ -98,6 +98,7 @@
     <Compile Include="Assets\KDG\KDG_Resources\Boss_HealthBar\Middle_Boss_HealthBar.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons_retry.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserDetection.cs" />
     <Compile Include="Assets\Scripts\Object\disappearObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Story\Portal.cs" />
