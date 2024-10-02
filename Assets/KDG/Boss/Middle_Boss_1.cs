@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Boss_Pattern_3 : MonoBehaviour
+public class Middle_Boss_1 : MonoBehaviour
 {
     enum BossState { Idle, AttackUpDown, AttackPlayer }
     BossState currentState;
@@ -33,7 +33,7 @@ public class Boss_Pattern_3 : MonoBehaviour
     private bool goingUp = true;
     private bool facingLeft = true;
     private Rigidbody2D enemyRB;
-    private int WallCount = 0; 
+    private int WallCount = 0;
 
     private float idleTimer = 0f;
     private float attackPlayerTimer = 0f;
@@ -58,10 +58,6 @@ public class Boss_Pattern_3 : MonoBehaviour
                 IdleState();
                 idleTimer += Time.deltaTime; // Idle 상태의 시간 카운트
 
-                if (WallCount == 3)
-                {
-                    AttackPlayer();
-                }
                 if (idleTimer >= 7f) // 7초가 지나면 AttackUpDown로 전환
                 {
                     currentState = BossState.AttackUpDown;
@@ -69,23 +65,16 @@ public class Boss_Pattern_3 : MonoBehaviour
                 }
                 break;
 
-            case BossState.AttackPlayer:
-                
-                
-                if (isTouchingWall || isTouchingDown) // 벽이나 바닥에 닿으면 Idle로 전환
-                {
-                    currentState = BossState.Idle;
-                }
-                break;
+
 
             case BossState.AttackUpDown:
-               
+
                 AttackUpDown();
-                
+
 
                 attackPlayerTimer += Time.deltaTime; // AttackPlayer 상태의 시간 카운트
 
-                if (attackPlayerTimer >= 3f) // 5초가 지나면 Idle로 전환
+                if (attackPlayerTimer >= 5f) // 5초가 지나면 Idle로 전환
                 {
                     currentState = BossState.Idle;
                     attackPlayerTimer = 0f; // 타이머 초기화
