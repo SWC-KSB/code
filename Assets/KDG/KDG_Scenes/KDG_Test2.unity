@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 590051754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.56, y: 1.1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -599,8 +599,8 @@ RectTransform:
   m_GameObject: {fileID: 627834009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 565229520}
   - {fileID: 130767940}
@@ -608,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 933, y: 629}
+  m_AnchoredPosition: {x: 773, y: 326}
   m_SizeDelta: {x: 100, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627834011
@@ -1360,7 +1360,7 @@ GameObject:
   - component: {fileID: 1374889075}
   m_Layer: 11
   m_Name: MIddle_Boss_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1452,7 +1452,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 43279075, guid: db5a3c2b6d060cf469e20be232bb9c02, type: 3}
-  m_Color: {r: 0.7424265, g: 0.4400498, b: 0.9924528, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1471,7 +1471,7 @@ Transform:
   m_GameObject: {fileID: 1374889067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.06, y: 3.3, z: 0}
+  m_LocalPosition: {x: 7.38, y: 0.03, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1651,8 +1651,8 @@ RectTransform:
   m_GameObject: {fileID: 1565774762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1683751009}
   - {fileID: 2141929172}
@@ -1660,7 +1660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 933, y: 629}
+  m_AnchoredPosition: {x: 147, y: 331}
   m_SizeDelta: {x: 100, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565774764
@@ -1698,6 +1698,7 @@ GameObject:
   - component: {fileID: 1651750842}
   - component: {fileID: 1651750841}
   - component: {fileID: 1651750840}
+  - component: {fileID: 1651750852}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1851,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6618fe17e77a7a489987bcfef1944a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img_Skill_2: {fileID: 0}
+  img_Skill_2: {fileID: 1707977456}
 --- !u!114 &1651750848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1864,7 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ad332266641ba4e97e9e3f20ae3524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img_Skill_1: {fileID: 0}
+  img_Skill_1: {fileID: 919643417}
 --- !u!61 &1651750849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1971,12 +1972,31 @@ Transform:
   m_GameObject: {fileID: 1651750839}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0021800983, y: -0, z: -0, w: 0.9999976}
-  m_LocalPosition: {x: -8.36, y: -0.86, z: -0}
+  m_LocalPosition: {x: -0, y: -0.86, z: 1}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.25, y: 0, z: 0}
+--- !u!114 &1651750852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651750839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ae18874be16a94594035f11bb4e16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1651750846}
+  attackCooldown: 0.5
+  attackRange: 1.5
+  attackDamage: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1663791728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2399,7 @@ GameObject:
   - component: {fileID: 2116746691}
   m_Layer: 11
   m_Name: Middle_Boss_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2498,7 +2518,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 279135617, guid: 1d13b8553c717b047947de08a81871b5, type: 3}
-  m_Color: {r: 0.7424265, g: 0.4400498, b: 0.9924528, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2517,7 +2537,7 @@ Transform:
   m_GameObject: {fileID: 2116746684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.63, y: 3.3, z: 0}
+  m_LocalPosition: {x: -7.38, y: -0.38, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2533,7 +2553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116746684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba42af9275a0514c981cc47f758641b, type: 3}
   m_Name: 
@@ -2725,13 +2745,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4506493872612367020, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.64
+      objectReference: {fileID: 0}
     - target: {fileID: 5882444818059214569, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1042867
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 5882444818059214569, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.51
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 5882444818059214569, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2768,6 +2792,10 @@ PrefabInstance:
     - target: {fileID: 7268105468967312362, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
       propertyPath: m_Name
       value: Middle_Boss_Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864146318747266510, guid: 6e3ddfd51b9e2994f9e84019bf87f83b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
