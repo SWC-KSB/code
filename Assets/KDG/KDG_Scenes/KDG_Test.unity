@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossHealth: {fileID: 1313573587}
-  totalHpBar: {fileID: 1153329144}
-  currentHPBar: {fileID: 450740599}
+  totalHpBar: {fileID: 450740599}
+  currentHPBar: {fileID: 1153329144}
 --- !u!1 &767241456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7172185119432070146, guid: 7f24ff656feb2db4898f6064a1a19d9e, type: 3}
@@ -3225,6 +3225,10 @@ PrefabInstance:
       propertyPath: idleMoveDirection.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1786340471292468362, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
+      propertyPath: attackMoveDirection.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2724492307006999365, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -3601,6 +3605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: frame_0_delay-0.08s_0
       objectReference: {fileID: 0}
+    - target: {fileID: 2891653376649870057, guid: 0b129aec37028f64a8737aaf92d00112, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2947142834935194682, guid: 0b129aec37028f64a8737aaf92d00112, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.44
@@ -3847,6 +3855,10 @@ PrefabInstance:
       propertyPath: idleMoveDirection.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1786340471292468362, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
+      propertyPath: attackMoveDirection.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2724492307006999365, guid: dba68ea250e1d8f4eb623474a31f4834, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -3942,7 +3954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5948388842147940862, guid: 7f24ff656feb2db4898f6064a1a19d9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.8
+      value: -51.6
       objectReference: {fileID: 0}
     - target: {fileID: 5948388842147940862, guid: 7f24ff656feb2db4898f6064a1a19d9e, type: 3}
       propertyPath: m_LocalPosition.y
