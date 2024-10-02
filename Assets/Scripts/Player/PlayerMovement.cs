@@ -69,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 _rigid.gravityScale = 0;
                 _rigid.velocity = Vector2.zero;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Jump();
+                    jumpCount--;
+                }
             }
             else
                 _rigid.gravityScale = 8f;
