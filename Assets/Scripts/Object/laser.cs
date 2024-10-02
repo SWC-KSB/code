@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Enemy_Laser : MonoBehaviour
 {
-    public float damage = 0.01f;
+    public DetectionUIController detectionMeter;
+    public float detectionRate = 10f; // 발각도가 증가하는 속도
     public float frequency = 0.0f;
     public float start = 0.0f;
+    private bool playerDetected = false;
     // Start is called before the first frame update
     void Start()
     {
+        detectionMeter = FindObjectOfType<DetectionUIController>();
         if (frequency != 0)
         {
             InvokeRepeating("ToggleActivation", start, frequency);
@@ -31,13 +34,7 @@ public class Enemy_Laser : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-
-            Health playerHealth = collider.gameObject.GetComponent<Health>();
-
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-            }
+            detectionMeter.IncreaseDetection(detectionRate * Time.deltaTime);
         }
     }
 

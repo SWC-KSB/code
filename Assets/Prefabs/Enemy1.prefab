@@ -34,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 1342356302664896246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6646285, y: -2.8415222, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: -1.6452019, y: -2.8557415, z: 0}
+  m_LocalScale: {x: -0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7578753476209504294}
@@ -245,16 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db44cef37577644abf1c480712b767b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
-  detectionSpeed: 20
-  detectionDecreaseSpeed: 10
-  maxDetection: 100
-  colliderDistance: 1
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  enemyAnimator: {fileID: 5040850736661421331}
+  detectionRadius: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  boxCollider: {fileID: -3365454071105762400}
-  detectionAnimator: {fileID: 0}
 --- !u!114 &6172689134428606104
 MonoBehaviour:
   m_ObjectHideFlags: 0

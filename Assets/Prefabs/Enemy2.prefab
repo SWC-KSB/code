@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 8362760487596742080}
   - component: {fileID: 1139562404524963521}
   - component: {fileID: 4141326495125368992}
-  - component: {fileID: -6707677150863806770}
   - component: {fileID: 2972162506841097203}
   m_Layer: 11
   m_Name: Enemy2
@@ -336,8 +335,8 @@ Transform:
   m_GameObject: {fileID: 7461996052604324302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.792821, y: -2.8203688, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -1.6452053, y: -2.8557415, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3280475292368532522}
@@ -520,30 +519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db44cef37577644abf1c480712b767b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
-  detectionSpeed: 20
-  detectionDecreaseSpeed: 10
-  maxDetection: 100
-  colliderDistance: 1
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  enemyAnimator: {fileID: 4793553484168787456}
+  detectionRadius: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  boxCollider: {fileID: -5775650032281272569}
-  detectionAnimator: {fileID: 0}
---- !u!114 &-6707677150863806770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461996052604324302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae35a11dfe461fa47905f5a6c533b3cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionSlider: {fileID: 0}
-  detectionAnimator: {fileID: 0}
 --- !u!114 &2972162506841097203
 MonoBehaviour:
   m_ObjectHideFlags: 0
