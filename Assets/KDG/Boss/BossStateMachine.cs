@@ -173,6 +173,7 @@ public class BossStateMachine : MonoBehaviour
             yield return null; 
         }
     }
+    public GameObject bossAttackPrefab; // BossAttack 프리팹을 연결할 변수
 
     private IEnumerator AttackBehavior()
     {
@@ -188,23 +189,21 @@ public class BossStateMachine : MonoBehaviour
             if (distanceToPlayer <= attackRange)
             {
                 // 공격 로직 구현
-                Vector3 squarePosition = player.position;
-                GameObject square = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                square.transform.position = squarePosition;
-                square.transform.localScale = new Vector3(1, 1, 1);
-                Renderer squareRenderer = square.GetComponent<Renderer>();
-                squareRenderer.material.color = Color.blue;
+                Vector3 attackPosition = player.position;
+                GameObject bossAttack = Instantiate(bossAttackPrefab, attackPosition, Quaternion.identity);
+                bossAttack.transform.localScale = new Vector3(1, 1, 1);
+                Renderer bossAttackRenderer = bossAttack.GetComponent<Renderer>();
+                bossAttackRenderer.material.color = Color.gray;
 
                 yield return new WaitForSeconds(1f);
-                squareRenderer.material.color = Color.red;
+                bossAttackRenderer.material.color = Color.white;
 
                 float timer = 0f;
                 while (timer < 0.5f)
                 {
-
                     transform.position += directionToPlayer1 * moveSpeed * Time.deltaTime;
 
-                    if (Vector3.Distance(square.transform.position, player.position) < 1f)
+                    if (Vector3.Distance(bossAttack.transform.position, player.position) < 1f)
                     {
                         player.GetComponent<Health>().TakeDamage(5f);
                     }
@@ -212,7 +211,7 @@ public class BossStateMachine : MonoBehaviour
                     yield return null;
                 }
 
-                Destroy(square);
+                Destroy(bossAttack);
             }
             else
             {
@@ -220,7 +219,6 @@ public class BossStateMachine : MonoBehaviour
                 transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
             }
 
-           
             if (hitsDuringPattern >= 5) // 데미지를 5번 입으면 상태 전환
             {
                 currentState = BossState.Pattern; // 다음 상태로 전환
@@ -231,6 +229,7 @@ public class BossStateMachine : MonoBehaviour
             yield return null; // 다음 프레임까지 대기
         }
     }
+
 
     private HashSet<int> executedPatterns = new HashSet<int>(); // 실행된 패턴을 저장하는 집합
 
@@ -295,7 +294,7 @@ public class BossStateMachine : MonoBehaviour
         Vector3 center = Vector3.zero; // 맵 중앙
         float pullSpeed = 5f;
         float timeElapsed = 0f;
-        float increaseInterval = 0.8f; // 증가 간격
+        float increaseInterval = 1.1f; // 증가 간격
 
         // 보스를 중앙으로 이동
         transform.position = center;
@@ -374,7 +373,7 @@ public class BossStateMachine : MonoBehaviour
             transform.position += (Vector3)(directionToPlayer * moveSpeed * Time.deltaTime);
 
             // 플레이어의 Y 위치 체크 및 처리
-            if (player.position.y < -40)
+            if (player.position.y < -20)
             {
                 TakeDamage(5); // 데미지 입히기
                 MoveToPlatform(); // 현재 발판 위로 이동
@@ -576,8 +575,8 @@ public class BossStateMachine : MonoBehaviour
 
         float initialY = player.position.y;
         float moveDirection = Random.Range(0f, 1f) < 0.5f ? 1f : -1f; // 1/2 확률로 방향 결정
-        float minX = player.position.x - 20f; // 플레이어의 X 위치 기준으로 이동 범위 설정
-        float maxX = player.position.x + 20f;
+        float minX = player.position.x - 15f; // 플레이어의 X 위치 기준으로 이동 범위 설정
+        float maxX = player.position.x + 15f;
 
 
         // 시작 위치로 이동
@@ -590,7 +589,7 @@ public class BossStateMachine : MonoBehaviour
         // 이동 시작
         for (float x = startX;
              (moveDirection > 0 ? x <= maxX : x >= minX);
-             x += moveSpeed * 11 * Time.deltaTime * moveDirection)
+             x += moveSpeed * 8 * Time.deltaTime * moveDirection)
         {
             transform.position = new Vector3(x, initialY, transform.position.z);
 
@@ -769,6 +768,33 @@ public class BossStateMachine : MonoBehaviour
     private void Die()
     {
         Debug.Log("Boss has died.");
+        StartCoroutine(FadeOutAndDestroy());
+    }
+
+    private IEnumerator FadeOutAndDestroy()
+    {
+        
+        Renderer renderer = GetComponent<Renderer>();
+        Color color = renderer.material.color;
+
+        float fadeDuration = 1f; // Fadeout 시간 (초)
+        float startAlpha = color.a;
+        float time = 0;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, 0, time / fadeDuration);
+            color.a = alpha;
+            renderer.material.color = color;
+            yield return null; // 다음 프레임까지 대기
+        }
+
+        // 최종적으로 알파 값을 0으로 설정
+        color.a = 0;
+        renderer.material.color = color;
+
+        // 게임 오브젝트 제거
         Destroy(gameObject);
     }
 }

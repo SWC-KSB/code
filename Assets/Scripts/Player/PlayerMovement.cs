@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Vector3 rotation = transform.eulerAngles;
+        rotation.z = 0;
+        transform.eulerAngles = rotation;
+
         if (isGrounded() )
         {
             jumpCount = maxJumpCount;
