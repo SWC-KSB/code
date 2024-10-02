@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy\EnemyDetection.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyPatrol.cs" />
+    <Compile Include="Assets\KDG\Boss\Middle_Boss_2.cs" />
     <Compile Include="Assets\Scripts\Object\laser.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack1.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons.cs" />
@@ -71,8 +72,8 @@
     <Compile Include="Assets\Scripts\UI\Skill_Key.cs" />
     <Compile Include="Assets\KDG\Boss\BossStateMachine.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key1.cs" />
-    <Compile Include="Assets\Scripts\UI\DitectionUI.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
+    <Compile Include="Assets\Scripts\UI\DitectionUI.cs" />
     <Compile Include="Assets\Scripts\Skill\HackingAttack.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Object\moveObject.cs" />
@@ -82,9 +83,11 @@
     <Compile Include="Assets\Scripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\GrandFather\GrandfatherMovement.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_HeartBar.cs" />
+    <Compile Include="Assets\KDG\Boss\Middle_Boss_1.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_AnimatiorManager.cs" />
     <Compile Include="Assets\Scripts\Health\Healthbar.cs" />
     <Compile Include="Assets\Scripts\Object\dashBlock.cs" />
+    <Compile Include="Assets\KDG\Boss\Middle_Boss_Mix.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\Health\Monster_Health.cs" />
     <Compile Include="Assets\Scripts\Camera\Camera Controller.cs" />
@@ -92,9 +95,10 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Spawner.cs" />
     <Compile Include="Assets\Scripts\Story\BlackOut.cs" />
     <Compile Include="Assets\Scripts\Object\switch.cs" />
-    <Compile Include="Assets\KDG\Boss\Boss_2.cs" />
+    <Compile Include="Assets\KDG\KDG_Resources\Boss_HealthBar\Middle_Boss_HealthBar.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons_retry.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserDetection.cs" />
     <Compile Include="Assets\Scripts\Object\disappearObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Story\Portal.cs" />
