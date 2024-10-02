@@ -110,9 +110,14 @@ public class PlayerDashAttack : MonoBehaviour
             {
                 // 적에게 데미지를 가하기
                 Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
+                BossStateMachine bossStateMachine = enemy.GetComponent<BossStateMachine>();
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(attackDamage);
+                }
+                else if (bossStateMachine != null)
+                {
+                    bossStateMachine.TakeDamage(attackDamage); // BossStateMachine에게 데미지를 가하기
                 }
             }
         }

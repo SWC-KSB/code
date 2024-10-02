@@ -52,9 +52,14 @@ public class HackingAttackPrefab : MonoBehaviour
             {
                 // 적에게 데미지를 가하기
                 Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
+                BossStateMachine bossStateMachine = enemy.GetComponent<BossStateMachine>();
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(damage);
+                }
+                else if (bossStateMachine != null)
+                {
+                    bossStateMachine.TakeDamage(damage); // BossStateMachine에게 데미지를 가하기
                 }
             }
         }

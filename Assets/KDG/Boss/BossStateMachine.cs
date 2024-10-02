@@ -12,7 +12,7 @@ public enum BossState
 
 public class BossStateMachine : MonoBehaviour
 {
-    public Health health;
+
     public float maxHealth = 100f;
     public float currentHealth;
     private float moveSpeed = 3f;
@@ -35,6 +35,7 @@ public class BossStateMachine : MonoBehaviour
     public GameObject object3Prefab; // object1 프리팹
     public GameObject object4Prefab; // object2 프리팹
     public GameObject pattern3RoomPrefab; // Pattern3Room 프리팹
+    public GameObject pattern1effectPrefab; // pattern1 프리펩
 
     private GameObject object1;
     private GameObject object2;
@@ -299,7 +300,10 @@ public class BossStateMachine : MonoBehaviour
         // 보스를 중앙으로 이동
         transform.position = center;
         yield return new WaitForSeconds(1f);
-   
+
+        // 프리펩 생성
+        GameObject spawnedPrefab = Instantiate(pattern1effectPrefab, center, Quaternion.identity);
+
         // 플레이어에게 지속적으로 데미지 주기 시작
         StartCoroutine(DamagePlayerInZone());
 
@@ -318,11 +322,14 @@ public class BossStateMachine : MonoBehaviour
             yield return null;
         }
 
-        
         transform.position = center;
 
         yield return new WaitForSeconds(3f);
+
+        // 패턴이 끝난 후 프리펩 삭제
+        Destroy(spawnedPrefab);
     }
+
 
 
     private IEnumerator DamagePlayerInZone()
@@ -348,7 +355,7 @@ public class BossStateMachine : MonoBehaviour
 
         Vector2 initialPlayerPosition = player.position;
         Vector2 initialBossPosition = Boss.position;
-
+        player.transform.position = new Vector2(0, 6);
         GameObject[] groundObjects = GameObject.FindGameObjectsWithTag("Ground");
         foreach (var groundObject in groundObjects)
         {
@@ -360,7 +367,7 @@ public class BossStateMachine : MonoBehaviour
         // 처음 생성할 발판 위치
         for (int j = 0; j < 3; j++)
         {
-            Vector2 spawnPosition = new Vector2(player.position.x, player.position.y - 5);
+            Vector2 spawnPosition = new Vector2(player.position.x, player.position.y - 3);
             occupiedPositions.Add(spawnPosition);
             GameObject platform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
             Destroy(platform, 5f);
@@ -373,7 +380,7 @@ public class BossStateMachine : MonoBehaviour
             transform.position += (Vector3)(directionToPlayer * moveSpeed * Time.deltaTime);
 
             // 플레이어의 Y 위치 체크 및 처리
-            if (player.position.y < -20)
+            if (player.position.y < -7)
             {
                 TakeDamage(5); // 데미지 입히기
                 MoveToPlatform(); // 현재 발판 위로 이동
@@ -498,23 +505,22 @@ public class BossStateMachine : MonoBehaviour
     {
         Debug.Log("Pattern 3");
 
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector2(-4, 15);
 
-        Vector3 position3 = transform.position + new Vector3(-7, 0, 0);
-        Vector3 position1 = transform.position + new Vector3(-2, 0, 0);
-        Vector3 position2 = transform.position + new Vector3(2, 0, 0);
-        Vector3 position4 = transform.position + new Vector3(-16, -9, 0);
+        Vector3 position3 = transform.position;
+        Vector3 position1 = transform.position;
+        Vector3 position2 = transform.position;
+        
 
 
         player.transform.position = position3; // 플레이어 위치 설정
-        transform.position = new Vector2(position3.x + 7, position3.y + 2); //보스 위치 설정
-
+        
 
         object1.transform.position = position1 + new Vector3(0,-2,0);
         object2.transform.position = position2 + new Vector3(0,-2,0);
         object3.transform.position = position1;
         object4.transform.position = position2;
-        Pattern3Room.transform.position = position4;
+        
 
                                                                   
         GameObject[] groundObjects = GameObject.FindGameObjectsWithTag("Ground");
@@ -667,13 +673,12 @@ public class BossStateMachine : MonoBehaviour
             GameObject sphere = Instantiate(spherePrefab, player.position, Quaternion.identity);
             float randomSize = Random.Range(1f, 3f);
             sphere.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
-            sphere.GetComponent<Renderer>().material.color = Color.yellow; // 초기 색상 설정
-
+            
             // 플레이어와의 접촉 처리
             StartCoroutine(CheckPlayerCollision(sphere));
 
             Destroy(sphere, 5f); // 5초 후에 구형 오브젝트 제거
-            yield return new WaitForSeconds(1f); // 3초마다 생성
+            yield return new WaitForSeconds(2f); // 3초마다 생성
         }
     }
 
@@ -686,17 +691,12 @@ public class BossStateMachine : MonoBehaviour
         {
             if (Vector3.Distance(sphere.transform.position, player.position) < 1f)
             {
-                if (!playerInContact)
-                {
-                    playerInContact = true;
-                    //playermovement.moveSpeed *= 0.7f; // 이동 속도 30% 감소
-                }
 
                 contactTime += Time.deltaTime;
 
-                if (contactTime >= 1f)
+                if (contactTime >= 0.3f)
                 {
-                    sphere.GetComponent<Renderer>().material.color = Color.red; // 3초 후 색상 변경
+                    
                     player.GetComponent<Health>().TakeDamage(5f); // 플레이어에게 5의 데미지 주기
                 }
             }
@@ -705,7 +705,7 @@ public class BossStateMachine : MonoBehaviour
                 if (playerInContact)
                 {
                     playerInContact = false;
-                    //playermovement.moveSpeed /= 0.7f; // 이동 속도 복구
+                    
                     contactTime = 0f; // 접촉 시간 초기화
                 }
             }
