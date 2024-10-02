@@ -6,7 +6,7 @@ public class Enemy_Health : MonoBehaviour
 {
     [Header("Ã¼·Â")]
     [SerializeField] public float InitialHealth;
-    public float currentHealth { get; private set; }
+    public float currentHealth { get; set; }
     private Animator anim;
     private bool dead;
 
