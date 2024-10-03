@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneSpeech6 : MonoBehaviour
+public class SceneSpeech5 : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public int scene;
@@ -31,20 +31,14 @@ public class SceneSpeech6 : MonoBehaviour
     public GameObject speechObject2;
     public GameObject speechObject3;
     public GameObject speechObject4;
-    public GameObject speechObject5;
-    public GameObject speechObject6;
-    public GameObject speechObject7;
-    public GameObject speechObject8;
+
 
     [Header("대사 위치들")]
     public Transform speechPosition1;
     public Transform speechPosition2;
     public Transform speechPosition3;
     public Transform speechPosition4;
-    public Transform speechPosition5;
-    public Transform speechPosition6;
-    public Transform speechPosition7;
-    public Transform speechPosition8;
+  
 
     // 대사 오브젝트와 위치를 리스트에 추가하는 함수
     public void AddSpeech(GameObject speechObject, Transform position)
@@ -165,10 +159,7 @@ public class SceneSpeech6 : MonoBehaviour
         AddSpeech(speechObject2, speechPosition2);  // 두 번째 대사
         AddSpeech(speechObject3, speechPosition3);  // 세 번째 대사
         AddSpeech(speechObject4, speechPosition4);  // 네 번째 대사
-        AddSpeech(speechObject5, speechPosition5);  // 다섯 번째 대사
-        AddSpeech(speechObject6, speechPosition6);  // 여섯 번째 대사
-        AddSpeech(speechObject7, speechPosition7);  // 일곱 번째 대사
-        AddSpeech(speechObject8, speechPosition8);  // 여덟 번째 대사
+ 
 
         // 모든 대사 오브젝트 비활성화
         foreach (var speechTuple in speechData)
