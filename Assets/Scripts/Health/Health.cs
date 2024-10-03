@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  // 씬 관리를 위해 추가
 
 public class Health : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class Health : MonoBehaviour
     [Header("효과음")]
     public AudioClip damageSound;                   // 데미지 입을 때 효과음
     private AudioSource audioSource;                // 오디오 소스 컴포넌트
+
+    [Header("게임 오버 설정")]
+    [SerializeField] private string gameOverSceneName = "GameOverScene";  // 게임 오버 씬 이름
+    [SerializeField] private float sceneTransitionDelay = 2f;  // 씬 전환 전 딜레이
 
     private void Awake()
     {
@@ -63,9 +68,22 @@ public class Health : MonoBehaviour
                     anim.SetTrigger("Die");
                     GetComponent<PlayerMovement>().enabled = false;
                     dead = true;
+
+                    // 씬 전환 코루틴 시작 (지연 시간을 두고 씬 전환)
+                    StartCoroutine(TransitionToGameOverScene());
                 }
             }
         }
+    }
+
+    // 씬 전환 코루틴
+    private IEnumerator TransitionToGameOverScene()
+    {
+        // 씬 전환 전 딜레이 (선택 사항)
+        yield return new WaitForSeconds(sceneTransitionDelay);
+
+        // 설정한 게임 오버 씬으로 전환
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     // 무적 상태 유지 (데미지 제한, 충돌은 허용)
