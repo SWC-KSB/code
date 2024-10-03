@@ -154,8 +154,8 @@
     <Compile Include="Assets\Scripts\first_Scene\ConfirmButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\UI\Story_Camera.cs" />
-    <Compile Include="Assets\Scripts\UI\Enemy_Healthbar.cs" />
     <Compile Include="Assets\Scripts\Story\SceneSpeech2.cs" />
+    <Compile Include="Assets\Scripts\UI\Enemy_Healthbar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
