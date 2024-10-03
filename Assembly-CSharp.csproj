@@ -94,6 +94,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\idle.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\Scripts\Story\ObjectDisappear.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Sideway.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Assets\Scripts\UI\MenuON.cs" />
     <Compile Include="Assets\Scripts\Story\Portal.cs" />
     <Compile Include="Assets\Scripts\Object\jumpBlock.cs" />
+    <Compile Include="Assets\Scripts\Story\back_potal.cs" />
     <Compile Include="Assets\Scripts\first_Scene\ConfirmButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\UI\Story_Camera.cs" />

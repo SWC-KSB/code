@@ -69,21 +69,22 @@ public class Health : MonoBehaviour
                     GetComponent<PlayerMovement>().enabled = false;
                     dead = true;
 
-                    // 씬 전환 코루틴 시작 (지연 시간을 두고 씬 전환)
-                    StartCoroutine(TransitionToGameOverScene());
+                    // 일정 시간이 지나면 Die 함수 호출
+                    StartCoroutine(DieWithDelay());
                 }
             }
         }
     }
 
-    // 씬 전환 코루틴
-    private IEnumerator TransitionToGameOverScene()
+    // 이 함수가 호출되면 현재 씬이 다시 로드됩니다.
+    private IEnumerator DieWithDelay()
     {
-        // 씬 전환 전 딜레이 (선택 사항)
+        // 씬을 다시 로드하기 전에 딜레이를 줍니다.
         yield return new WaitForSeconds(sceneTransitionDelay);
 
-        // 설정한 게임 오버 씬으로 전환
-        SceneManager.LoadScene(gameOverSceneName);
+        // 현재 활성화된 씬을 불러오고 다시 로드
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     // 무적 상태 유지 (데미지 제한, 충돌은 허용)

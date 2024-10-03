@@ -5295,6 +5295,7 @@ GameObject:
   - component: {fileID: 756368184}
   - component: {fileID: 756368187}
   - component: {fileID: 756368188}
+  - component: {fileID: 756368189}
   m_Layer: 0
   m_Name: laser (12)
   m_TagString: Untagged
@@ -5453,6 +5454,23 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &756368188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756368182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17bfceda75d8294469d09c5d530f77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  frequency: 0
+  start: 0
+  detectionSound: {fileID: 0}
+--- !u!114 &756368189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6893,6 +6911,7 @@ GameObject:
   - component: {fileID: 948808919}
   - component: {fileID: 948808922}
   - component: {fileID: 948808923}
+  - component: {fileID: 948808924}
   m_Layer: 0
   m_Name: laser (10)
   m_TagString: Untagged
@@ -7051,6 +7070,23 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &948808923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948808917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17bfceda75d8294469d09c5d530f77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  frequency: 0
+  start: 0
+  detectionSound: {fileID: 0}
+--- !u!114 &948808924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9611,6 +9647,7 @@ GameObject:
   - component: {fileID: 1324327396}
   - component: {fileID: 1324327397}
   - component: {fileID: 1324327398}
+  - component: {fileID: 1324327399}
   m_Layer: 0
   m_Name: laser (11)
   m_TagString: Untagged
@@ -9791,6 +9828,23 @@ MonoBehaviour:
   frequency: 0
   start: 0
   detectionSound: {fileID: 8300000, guid: b8fce6bd054b62a43995afbb42e86c07, type: 3}
+--- !u!114 &1324327399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324327391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17bfceda75d8294469d09c5d530f77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  frequency: 0
+  start: 0
+  detectionSound: {fileID: 0}
 --- !u!1 &1342139998
 GameObject:
   m_ObjectHideFlags: 0
@@ -11875,6 +11929,7 @@ GameObject:
   - component: {fileID: 1730820727}
   - component: {fileID: 1730820726}
   - component: {fileID: 1730820737}
+  - component: {fileID: 1730820738}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -12143,7 +12198,7 @@ Transform:
   m_GameObject: {fileID: 1730820725}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0021800983, y: -0, z: -0, w: 0.9999976}
-  m_LocalPosition: {x: -22.58, y: -0.67, z: 0.03}
+  m_LocalPosition: {x: -21.7, y: -2.06, z: 0.04}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12169,6 +12224,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   attackSound: {fileID: 8300000, guid: 8bed46d0b7024b8418cc6cd68298f94d, type: 3}
+--- !u!114 &1730820738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730820725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778428dcc801916419c7bf9506ca1810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1774696011
 GameObject:
   m_ObjectHideFlags: 0
@@ -12258,6 +12325,7 @@ GameObject:
   - component: {fileID: 1784711210}
   - component: {fileID: 1784711213}
   - component: {fileID: 1784711214}
+  - component: {fileID: 1784711215}
   m_Layer: 0
   m_Name: laser (9)
   m_TagString: Untagged
@@ -12416,6 +12484,23 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1784711214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784711208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17bfceda75d8294469d09c5d530f77ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMeter: {fileID: 0}
+  detectionRate: 10
+  frequency: 0
+  start: 0
+  detectionSound: {fileID: 0}
+--- !u!114 &1784711215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
