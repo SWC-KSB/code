@@ -51,6 +51,7 @@ public class BossStateMachine : MonoBehaviour
     public AudioClip BreakSound;
     public AudioClip DashSound;
     public AudioClip MakePlatformSound;
+    public AudioClip BossLaugh;
     private AudioSource audioSource;    // 오디오 소스 컴포넌트
 
     [Header("Hit Effect")]
@@ -191,10 +192,20 @@ private void Start()
         }
     }
 
+    private void PlayBossLaughSound(float startTime, float duration)
+    {
+        audioSource.clip = BossLaughSound;
+        audioSource.time = startTime; // 시작 시간 설정
+        audioSource.Play();
+        Invoke("StopSound", duration); // 지정된 시간 후에 정지
+    }
+
+    
+
     private IEnumerator IdleBehavior()
     {
         Debug.Log("Boss is waiting.");
-
+        PlayBossLaughSound(0, 7);
         while (true)
         { 
             if (Vector3.Distance(transform.position, player.position) < attackRange)
