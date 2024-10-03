@@ -76,6 +76,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech4.cs" />
     <Compile Include="Assets\Scripts\Health\CollectableHeart.cs" />
     <Compile Include="Assets\Scripts\Story\SceneSpeech.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
     <Compile Include="Assets\Scripts\Skill\HackingAttack.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech5.cs" />
     <Compile Include="Assets\Scripts\Object\moveObject.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
@@ -116,20 +118,23 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\Health\Monster_Health.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech3.cs" />
     <Compile Include="Assets\Scripts\Camera\Camera Controller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Health.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Spawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Story\BlackOut.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech6.cs" />
     <Compile Include="Assets\Scripts\Story\Speech.cs" />
-    <Compile Include="Assets\Scripts\Object\switch.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\Scripts\Object\switch.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\UI\ObjectToggle.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_HealthBar\Middle_Boss_HealthBar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech1.cs" />
     <Compile Include="Assets\Scripts\UI\ShowButtonOnHover.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
@@ -146,6 +151,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\UI\Story_Camera.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy_Healthbar.cs" />
+    <Compile Include="Assets\Scripts\Story\SceneSpeech2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
