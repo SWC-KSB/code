@@ -49,21 +49,29 @@ public class Player_BaseAttack : MonoBehaviour
         Invoke("ResetAttack", attackCooldown);  // 쿨타임 후 공격 초기화 호출
     }
 
+
     void PerformAttack()
     {
         // 공격 범위 내의 적을 감지
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
 
-        // 감지된 적에게 데미지를 가함
+        // 감지된 적에게 데미지를 가하기
         foreach (Collider2D enemy in hitEnemies)
         {
             Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
+            BossStateMachine bossStateMachine = enemy.GetComponent<BossStateMachine>(); // BossStateMachine 추가
+
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(attackDamage);  // 적에게 데미지를 가함
+                enemyHealth.TakeDamage(attackDamage);  // 적에게 데미지를 가하기
+            }
+            else if (bossStateMachine != null)
+            {
+                bossStateMachine.TakeDamage(attackDamage); // BossStateMachine에게 데미지를 가하기
             }
         }
     }
+
 
     void ResetAttack()
     {
