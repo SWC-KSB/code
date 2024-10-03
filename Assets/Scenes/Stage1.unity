@@ -10548,7 +10548,6 @@ GameObject:
   - component: {fileID: 1324327392}
   - component: {fileID: 1324327395}
   - component: {fileID: 1324327394}
-  - component: {fileID: 1324327396}
   - component: {fileID: 1324327397}
   - component: {fileID: 1324327398}
   - component: {fileID: 1324327399}
@@ -10671,29 +10670,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1324327396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324327391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2ff5298dcc09e42a482fee46a38ce8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 1
-  detectionSpeed: 20
-  detectionDecreaseSpeed: 10
-  maxDetection: 100
-  colliderDistance: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  boxCollider: {fileID: 1324327394}
-  detectionAnimator: {fileID: 0}
-  detectionSound: {fileID: 0}
 --- !u!95 &1324327397
 Animator:
   serializedVersion: 5
@@ -13403,7 +13379,7 @@ Transform:
   m_GameObject: {fileID: 1730820725}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0021800983, y: -0, z: -0, w: 0.9999976}
-  m_LocalPosition: {x: -21.7, y: -2.06, z: 0.04}
+  m_LocalPosition: {x: -10.5, y: 15.36, z: -0.04}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

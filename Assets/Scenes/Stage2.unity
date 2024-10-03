@@ -9947,10 +9947,10 @@ MonoBehaviour:
     m_Bits: 512
   key_: 0
   maxJumpCount: 2
-  walkSound: {fileID: 8300000, guid: 6e424e0809777ff4288779fd7c33b066, type: 3}
+  walkSound: {fileID: 8300000, guid: aabf6005b44c11c4ca265cce401ba0c5, type: 3}
   jumpSound: {fileID: 8300000, guid: 2102118106f27b440997ae7b21d1975d, type: 3}
   walkSoundVolume: 10
-  walkSoundInterval: 0.5
+  walkSoundInterval: 0.2
 --- !u!50 &1730820730
 Rigidbody2D:
   serializedVersion: 4
@@ -10131,7 +10131,7 @@ Transform:
   m_GameObject: {fileID: 1730820725}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0021800983, y: -0, z: -0, w: 0.9999976}
-  m_LocalPosition: {x: -25.72, y: 28.4, z: -0.13}
+  m_LocalPosition: {x: -26.92, y: -2.6, z: -0.12}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
