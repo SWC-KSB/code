@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
     }
 
     // ¾À ·Îµå ÇÔ¼ö
-    void LoadScene()
+    public void LoadScene()
     {
         string connectstring = @"Data Source=" + Application.streamingAssetsPath + dbname + ";";
         using (IDbConnection con = new SqliteConnection(connectstring))
