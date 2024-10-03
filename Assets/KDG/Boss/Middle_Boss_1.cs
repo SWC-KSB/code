@@ -27,6 +27,10 @@ public class Middle_Boss_1 : MonoBehaviour
     [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask groundLayer;
 
+    [Header("효과음")]
+    public AudioClip PingPongSound;
+    private AudioSource audioSource;    // 오디오 소스 컴포넌트
+
     private bool isTouchingUp;
     private bool isTouchingDown;
     private bool isTouchingWall;
@@ -37,6 +41,17 @@ public class Middle_Boss_1 : MonoBehaviour
 
     private float idleTimer = 0f;
     private float attackPlayerTimer = 0f;
+
+
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
 
     void Start()
     {
@@ -91,19 +106,33 @@ public class Middle_Boss_1 : MonoBehaviour
 
 
     }
+    private void PlayPingPongSound(float startTime, float duration)
+    {
+        audioSource.clip = PingPongSound;
+        audioSource.time = startTime; // 시작 시간 설정
+        audioSource.Play();
+        Invoke("StopSound", duration); // 지정된 시간 후에 정지
+    }
 
+    private void StopSound()
+    {
+        audioSource.Stop();
+    }
     void IdleState()
     {
         if (isTouchingUp && goingUp)
         {
+            PlayPingPongSound(0, 1);
             ChangeDirection();
         }
         else if (isTouchingDown && !goingUp)
         {
+            PlayPingPongSound(0, 1);
             ChangeDirection();
         }
         if (isTouchingWall)
         {
+            PlayPingPongSound(0, 1);
             WallCount += 1;
             Flip();
         }
@@ -114,15 +143,18 @@ public class Middle_Boss_1 : MonoBehaviour
     {
         if (isTouchingUp && goingUp)
         {
+            PlayPingPongSound(0, 1);
             ChangeDirection();
         }
         else if (isTouchingDown && !goingUp)
         {
+            PlayPingPongSound(0, 1);
             ChangeDirection();
         }
         if (isTouchingWall)
 
         {
+            PlayPingPongSound(0, 1);
             WallCount += 1;
             Flip();
         }
@@ -138,6 +170,7 @@ public class Middle_Boss_1 : MonoBehaviour
 
         if (isTouchingWall || isTouchingDown)
         {
+            PlayPingPongSound(0, 1);
             enemyRB.velocity = Vector2.zero;
         }
         WallCount = 0;
