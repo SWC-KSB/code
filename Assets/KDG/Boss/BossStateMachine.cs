@@ -45,13 +45,34 @@ public class BossStateMachine : MonoBehaviour
 
     private Queue<Vector2> lastSpawnedPlatforms = new Queue<Vector2>(); // 마지막 10개의 발판 위치 저장
 
+    [Header("효과음")]
+    public AudioClip FireSound;
+    public AudioClip BackSound;
+    public AudioClip BreakSound;
+    public AudioClip DashSound;
+    public AudioClip MakePlatformSound;
+    private AudioSource audioSource;    // 오디오 소스 컴포넌트
 
-    private void Start()
+    [Header("Hit Effect")]
+    [SerializeField] private int numberOfFlashes = 3;  // 깜빡이는 횟수
+    [SerializeField] private float flashDuration = 0.1f;  // 깜빡이는 속도
+    private SpriteRenderer spriteRender;
+
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
+private void Start()
     {
         currentHealth = maxHealth;
         currentState = BossState.Idle;
         StartCoroutine(StateMachine());
-        StartCoroutine(DecreaseHealthOverTime());
+
 
         Rigidbody2D bossRB = GetComponent<Rigidbody2D>();
         bossRB.isKinematic = true;
@@ -78,6 +99,8 @@ public class BossStateMachine : MonoBehaviour
         {
             player.GetComponent<Health>().TakeDamage(5f);
         }
+
+        spriteRender = GetComponent<SpriteRenderer>();
 
         // 시간 경과 체크
         timeInCurrentState += Time.deltaTime;
@@ -186,6 +209,22 @@ public class BossStateMachine : MonoBehaviour
     }
     public GameObject bossAttackPrefab; // BossAttack 프리팹을 연결할 변수
 
+
+
+    private void PlayFireSound(float startTime, float duration)
+    {
+        audioSource.clip = FireSound;
+        audioSource.time = startTime; // 시작 시간 설정
+        audioSource.Play();
+        Invoke("StopSound", duration); // 지정된 시간 후에 정지
+    }
+
+    private void StopSound()
+    {
+        audioSource.Stop();
+    }
+
+
     private IEnumerator AttackBehavior()
     {
         Debug.Log("Boss is attacking.");
@@ -206,6 +245,9 @@ public class BossStateMachine : MonoBehaviour
                 Renderer bossAttackRenderer = bossAttack.GetComponent<Renderer>();
                 bossAttackRenderer.material.color = Color.gray;
 
+                PlayFireSound(0.5f, 1f); // 0.5초부터 1초간 재생
+
+
                 yield return new WaitForSeconds(1f);
                 bossAttackRenderer.material.color = Color.white;
 
@@ -217,6 +259,8 @@ public class BossStateMachine : MonoBehaviour
                     if (Vector3.Distance(bossAttack.transform.position, player.position) < 1f)
                     {
                         player.GetComponent<Health>().TakeDamage(5f);
+                        PlayFireSound(5f, 1f); // 5초부터 1초간 재생
+
                     }
                     timer += Time.deltaTime;
                     yield return null;
@@ -240,6 +284,7 @@ public class BossStateMachine : MonoBehaviour
             yield return null; // 다음 프레임까지 대기
         }
     }
+
 
 
     private HashSet<int> executedPatterns = new HashSet<int>(); // 실행된 패턴을 저장하는 집합
@@ -317,6 +362,9 @@ public class BossStateMachine : MonoBehaviour
         // 플레이어에게 지속적으로 데미지 주기 시작
         StartCoroutine(DamagePlayerInZone());
 
+        // BackSound 재생
+        PlayBackgroundSound(); // 사운드 재생
+
         while (hitsDuringPattern < 5)
         {
             player.position = Vector3.MoveTowards(player.position, center, pullSpeed * Time.deltaTime);
@@ -332,12 +380,27 @@ public class BossStateMachine : MonoBehaviour
             yield return null;
         }
 
+        // 패턴이 끝난 후
         transform.position = center;
-
         yield return new WaitForSeconds(3f);
 
         // 패턴이 끝난 후 프리펩 삭제
         Destroy(spawnedPrefab);
+
+        // 사운드 정지
+        StopBackgroundSound(); // 사운드 정지
+    }
+
+    private void PlayBackgroundSound()
+    {
+        audioSource.clip = BackSound; // BackSound 클립 설정
+        audioSource.loop = true; // 반복 재생 설정
+        audioSource.Play(); // 사운드 재생
+    }
+
+    private void StopBackgroundSound()
+    {
+        audioSource.Stop(); // 사운드 정지
     }
 
 
@@ -392,12 +455,13 @@ public class BossStateMachine : MonoBehaviour
             // 플레이어의 Y 위치 체크 및 처리
             if (player.position.y < -7)
             {
-                TakeDamage(5); // 데미지 입히기
-                MoveToPlatform(); // 현재 발판 위로 이동
+                player.GetComponent<Health>().TakeDamage(5f); MoveToPlatform(); // 현재 발판 위로 이동
             }
 
             Vector2 randomOffset = Random.insideUnitCircle * Random.Range(5f, 8f);
             transform.position = (Vector3)player.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            PlayMakePlatformSound(2, 3);
 
             for (int j = 0; j < 5; j++)
             {
@@ -507,7 +571,13 @@ public class BossStateMachine : MonoBehaviour
         }
         return false; // 겹침 없음
     }
-
+    private void PlayMakePlatformSound(float startTime, float duration)
+    {
+        audioSource.clip = MakePlatformSound;
+        audioSource.time = startTime; // 시작 시간 설정
+        audioSource.Play();
+        Invoke("StopSound", duration); // 지정된 시간 후에 정지
+    }
 
 
 
@@ -601,7 +671,7 @@ public class BossStateMachine : MonoBehaviour
 
         // 0.5초 대기
         yield return new WaitForSeconds(0.7f);
-
+        PlayDashSound();
         // 이동 시작
         for (float x = startX;
              (moveDirection > 0 ? x <= maxX : x >= minX);
@@ -615,6 +685,7 @@ public class BossStateMachine : MonoBehaviour
             }
             yield return null;
         }
+        StopDashSound();
         yield return new WaitForSeconds(3f);
 
         // 패턴 실행 횟수 증가
@@ -630,6 +701,15 @@ public class BossStateMachine : MonoBehaviour
             pattern4Count = 0;
             yield return null; 
         }
+    }
+    private void PlayDashSound()
+    {
+        audioSource.clip = DashSound; // BackSound 클립 설정
+        audioSource.Play(); // 사운드 재생
+    }
+    private void StopDashSound()
+    {
+        audioSource.Stop();
     }
 
 
@@ -683,6 +763,7 @@ public class BossStateMachine : MonoBehaviour
             GameObject sphere = Instantiate(spherePrefab, player.position, Quaternion.identity);
             float randomSize = Random.Range(1f, 4f);
             sphere.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
+            PlayBreakSound(0,2);
             
             // 플레이어와의 접촉 처리
             StartCoroutine(CheckPlayerCollision(sphere));
@@ -690,6 +771,15 @@ public class BossStateMachine : MonoBehaviour
             Destroy(sphere, 3f); 
             yield return new WaitForSeconds(3f); // 3초마다 생성
         }
+    }
+
+
+    private void PlayBreakSound(float startTime, float duration)
+    {
+        audioSource.clip = BreakSound;
+        audioSource.time = startTime; // 시작 시간 설정
+        audioSource.Play();
+        Invoke("StopSound", duration); // 지정된 시간 후에 정지
     }
 
     private IEnumerator CheckPlayerCollision(GameObject sphere)
@@ -754,24 +844,30 @@ public class BossStateMachine : MonoBehaviour
         }
     }
 
-    //피격 시스템 부재 -> 3초마다 데미지 입는 메서드
-    private IEnumerator DecreaseHealthOverTime()
-    {
-        while (currentHealth > 0)
-        {
-            TakeDamage(1f); 
-            yield return new WaitForSeconds(3f); 
-        }
-    }
+
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         hitsDuringPattern++;
-        damageReceived += damage; 
+        damageReceived += damage;
+        if (currentHealth > 0)
+        {
+            StartCoroutine(FlashRed());  // 깜빡거리는 효과
+        }
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+    private IEnumerator FlashRed()
+    {
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRender.color = new Color(1, 0, 0, 1);  // 빨간색으로 변경
+            yield return new WaitForSeconds(flashDuration);  // 깜빡이는 시간
+            spriteRender.color = Color.white;  // 원래 색으로 돌아옴
+            yield return new WaitForSeconds(flashDuration);  // 깜빡이는 시간
         }
     }
 
