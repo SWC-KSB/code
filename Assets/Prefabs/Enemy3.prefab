@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 473363312952256149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6452053, y: -2.8557415, z: 0}
+  m_LocalPosition: {x: -2.853462, y: -2.8204193, z: 0}
   m_LocalScale: {x: -2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -207,6 +207,8 @@ MonoBehaviour:
   iFrameDuration: 1
   numberOfFlashes: 1
   damageSound: {fileID: 8300000, guid: b8fce6bd054b62a43995afbb42e86c07, type: 3}
+  gameOverSceneName: GameOverScene
+  sceneTransitionDelay: 2
 --- !u!114 &4331807054645706540
 MonoBehaviour:
   m_ObjectHideFlags: 0
