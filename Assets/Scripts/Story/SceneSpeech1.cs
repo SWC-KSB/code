@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneSpeech : MonoBehaviour
+public class SceneSpeech1 : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public int scene;
