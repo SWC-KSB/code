@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a625024864a9e114eb2e76677291bac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Virtual_Scene
+  sceneToLoad: Stage1
 --- !u!61 &5471253031435046354
 BoxCollider2D:
   m_ObjectHideFlags: 0
