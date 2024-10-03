@@ -117,6 +117,9 @@ public class SceneSpeech : MonoBehaviour
         {
             Instantiate(prefabToSpawn, spawnLocation.position, spawnLocation.rotation);
             hasPortalSpawned = true;  // 포탈 생성 후 다시 생성되지 않게 설정
+
+            // PlayerMovement 다시 활성화
+            playerMovement.enabled = true;
         }
     }
 
