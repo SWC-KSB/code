@@ -17,13 +17,15 @@ public class BlackOut : MonoBehaviour
     public GrandfatherMovement2D grandfather;  // 할아버지 캐릭터의 이동 스크립트
     public Transform customBubblePosition;  // 말풍선을 표시할 수동으로 지정한 위치
     public float bubbleDuration = 2.0f;  // 말풍선 유지 시간
-    public SceneSpeech sceneSpeech;
+    public SceneSpeech sceneSpeech;  // SceneSpeech 클래스 참조
 
     void Start()
     {
-
-        fadeImage.color = new Color(0, 0, 0, 0);  // 처음에 완전히 투명하게 설정
-        playerAnimator.SetBool("IsLying", true);  // 처음에 침대에 누워있는 상태로 설정
+        // 처음에 완전히 투명하게 설정
+        fadeImage.color = new Color(0, 0, 0, 0);
+        // 처음에 플레이어가 침대에 누워있는 상태로 설정
+        playerAnimator.SetBool("IsLying", true);
+        // 시작할 때 SceneSpeech를 비활성화
         sceneSpeech.gameObject.SetActive(false);
     }
 
@@ -35,20 +37,17 @@ public class BlackOut : MonoBehaviour
             flickering = true;
             flickerCount++;  // 우클릭 감지 시 깜빡임 횟수 증가
             StartCoroutine(FlickerEffect());
-
         }
-
-        // 세 번째 우클릭은 할아버지가 플레이어 쪽으로 걸어오며 말풍선을 표시
+        // 세 번째 우클릭 시 할아버지가 걸어오며 말풍선을 표시
         else if (Input.GetMouseButtonDown(1) && flickerCount == maxFlickerCount && !playerHasRisen)
         {
             PlayWakeUpAnimation();  // 첫 번째 애니메이션 실행
             grandfather.StartWalking();  // 할아버지가 플레이어 쪽으로 걷기 시작
-            playerHasRisen = true;  // 애니메이션 실행 상태로 설정
-            sceneSpeech.gameObject.SetActive(true);
-            sceneSpeech.PrintSpeech();
+            playerHasRisen = true;  // 플레이어가 일어난 상태로 설정
+            sceneSpeech.gameObject.SetActive(true);  // SceneSpeech 활성화
+            sceneSpeech.DisplaySpeech();  // 대사 출력 (PrintSpeech 대신 DisplaySpeech 사용)
         }
-
-        // 네 번째 우클릭은 두 번째 애니메이션 (StandUp) 트리거
+        // 네 번째 우클릭 시 두 번째 애니메이션 (StandUp) 트리거
         else if (Input.GetMouseButtonDown(1) && playerHasRisen && !secondAnimationTriggered)
         {
             secondAnimationTriggered = true;
@@ -86,6 +85,4 @@ public class BlackOut : MonoBehaviour
     {
         playerAnimator.SetTrigger("StandUp");  // StandUp 애니메이션 트리거
     }
-
-
 }
