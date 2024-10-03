@@ -55,7 +55,6 @@
     <UnityVersion>2022.3.14f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -74,7 +73,6 @@
     <Compile Include="Assets\KDG\Boss\BossStateMachine.cs" />
     <Compile Include="Assets\Scripts\UI\Skill_Key1.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_Animator\Boss_Animation_Controller.cs" />
-    <Compile Include="Assets\Scripts\UI\DitectionUI.cs" />
     <Compile Include="Assets\Scripts\Skill\HackingAttack.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Object\moveObject.cs" />
@@ -83,6 +81,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Sideway.cs" />
     <Compile Include="Assets\Scripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\GrandFather\GrandfatherMovement.cs" />
+    <Compile Include="Assets\Scripts\Object\LaserDetection.cs" />
     <Compile Include="Assets\KDG\Boss\Boss_HeartBar.cs" />
     <Compile Include="Assets\KDG\Boss\Middle_Boss_1.cs" />
     <Compile Include="Assets\KDG\KDG_Resources\Boss_AnimatiorManager.cs" />
@@ -100,7 +99,7 @@
     <Compile Include="Assets\KDG\KDG_Resources\Boss_HealthBar\Middle_Boss_HealthBar.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Attack.cs" />
     <Compile Include="Assets\Scripts\first_Scene\Buttons_retry.cs" />
-    <Compile Include="Assets\Scripts\Enemy\LaserDetection.cs" />
+    <Compile Include="Assets\Scripts\UI\DetectionUIController.cs" />
     <Compile Include="Assets\Scripts\Object\disappearObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Story\Portal.cs" />
