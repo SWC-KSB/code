@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleMoveSpeed: 10
   idleMoveDirection: {x: 1, y: 2}
-  attackMoveSpeed: 15
+  attackMoveSpeed: 18
   attackMoveDirection: {x: 1, y: 5}
   attackPlayerSpeed: 20
   player: {fileID: 0}

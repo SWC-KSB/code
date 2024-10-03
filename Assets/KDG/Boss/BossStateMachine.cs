@@ -58,8 +58,8 @@ public class BossStateMachine : MonoBehaviour
         // 오브젝트 생성
         object1 = Instantiate(object1Prefab);
         object2 = Instantiate(object2Prefab);
-        object3 = Instantiate(object1Prefab);
-        object4 = Instantiate(object2Prefab);
+        object3 = Instantiate(object3Prefab);
+        object4 = Instantiate(object4Prefab);
 
         Pattern3Room = Instantiate(pattern3RoomPrefab);
 
@@ -103,7 +103,7 @@ public class BossStateMachine : MonoBehaviour
                 break;
 
             case BossState.Attack:
-                if (hitsDuringPattern >= 5) // 데미지를 5번 입으면 상태 전환
+                if (hitsDuringPattern >= 3) // 데미지를 5번 입으면 상태 전환
                 {
                     currentState = BossState.Pattern;
                     hitsDuringPattern = 0;
@@ -127,8 +127,18 @@ public class BossStateMachine : MonoBehaviour
                 break;
 
             case BossState.Defense:
-                currentState = BossState.Attack; // 방어 상태에서 공격 상태로 전환
+                int randomValue = Random.Range(0, 2); // 0은 Attack, 1은 Pattern
+
+                if (randomValue >= 1)
+                {
+                    currentState = BossState.Attack; // 50% 확률로 Attack으로 전환
+                }
+                else
+                {
+                    currentState = BossState.Pattern; // 50% 확률로 Pattern으로 전환
+                }
                 break;
+
         }
     }
 
@@ -581,8 +591,8 @@ public class BossStateMachine : MonoBehaviour
 
         float initialY = player.position.y;
         float moveDirection = Random.Range(0f, 1f) < 0.5f ? 1f : -1f; // 1/2 확률로 방향 결정
-        float minX = player.position.x - 15f; // 플레이어의 X 위치 기준으로 이동 범위 설정
-        float maxX = player.position.x + 15f;
+        float minX = player.position.x - 10f; // 플레이어의 X 위치 기준으로 이동 범위 설정
+        float maxX = player.position.x + 10f;
 
 
         // 시작 위치로 이동
@@ -595,7 +605,7 @@ public class BossStateMachine : MonoBehaviour
         // 이동 시작
         for (float x = startX;
              (moveDirection > 0 ? x <= maxX : x >= minX);
-             x += moveSpeed * 8 * Time.deltaTime * moveDirection)
+             x += moveSpeed * 9 * Time.deltaTime * moveDirection)
         {
             transform.position = new Vector3(x, initialY, transform.position.z);
 
@@ -671,14 +681,14 @@ public class BossStateMachine : MonoBehaviour
         while (true)
         {
             GameObject sphere = Instantiate(spherePrefab, player.position, Quaternion.identity);
-            float randomSize = Random.Range(1f, 3f);
+            float randomSize = Random.Range(1f, 4f);
             sphere.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
             
             // 플레이어와의 접촉 처리
             StartCoroutine(CheckPlayerCollision(sphere));
 
-            Destroy(sphere, 5f); // 5초 후에 구형 오브젝트 제거
-            yield return new WaitForSeconds(2f); // 3초마다 생성
+            Destroy(sphere, 3f); 
+            yield return new WaitForSeconds(3f); // 3초마다 생성
         }
     }
 
