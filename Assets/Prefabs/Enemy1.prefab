@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 5
+  attackSound: {fileID: 8300000, guid: fc9be04767ab17648a2ebbc5f0846937, type: 3}
 --- !u!114 &225112109404805238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +253,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  detectionSound: {fileID: 8300000, guid: b8fce6bd054b62a43995afbb42e86c07, type: 3}
 --- !u!114 &6172689134428606104
 MonoBehaviour:
   m_ObjectHideFlags: 0

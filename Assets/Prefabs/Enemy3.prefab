@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 5
+  attackSound: {fileID: 8300000, guid: fc9be04767ab17648a2ebbc5f0846937, type: 3}
 --- !u!114 &-5711830856566139186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   InitialHealth: 10
   iFrameDuration: 1
   numberOfFlashes: 1
+  damageSound: {fileID: 8300000, guid: b8fce6bd054b62a43995afbb42e86c07, type: 3}
 --- !u!114 &4331807054645706540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
+  detectionSound: {fileID: 0}
 --- !u!114 &3793453841756347835
 MonoBehaviour:
   m_ObjectHideFlags: 0

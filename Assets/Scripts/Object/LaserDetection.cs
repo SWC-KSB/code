@@ -16,6 +16,10 @@ public class LaserDetection : MonoBehaviour
 
     public Animator detectionAnimator;  // 발각도 UI 애니메이터 (눈이 서서히 떠지는 시스템)
 
+    [Header("효과음")]
+    public AudioClip detectionSound;    // 감지 소리
+    private AudioSource audioSource;    // 오디오 소스 컴포넌트
+
     private void Awake()
     {
         // UI의 Animator를 동적으로 찾기
@@ -46,7 +50,14 @@ public class LaserDetection : MonoBehaviour
             }
         }
 
-        // **발각도가 이미 있으면 리셋하지 않도록 처리**
+        // AudioSource 컴포넌트 가져오기 또는 없으면 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // 발각도가 이미 있으면 리셋하지 않도록 처리
         if (detectionLevel > 0)
         {
             Debug.Log("Detection level already set, no reset.");
@@ -87,6 +98,13 @@ public class LaserDetection : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             Debug.Log("Player detected in BoxCast.");
+
+            // 감지 소리 재생
+            if (detectionSound != null && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(detectionSound);
+            }
+
             return true;  // 플레이어가 범위 내에 있음
         }
 
