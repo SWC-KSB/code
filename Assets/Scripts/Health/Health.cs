@@ -16,11 +16,22 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRender;
     private bool isInvulnerable = false;            // 무적 상태 플래그
 
+    [Header("효과음")]
+    public AudioClip damageSound;                   // 데미지 입을 때 효과음
+    private AudioSource audioSource;                // 오디오 소스 컴포넌트
+
     private void Awake()
     {
         currentHealth = InitialHealth;
         anim = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
+
+        // AudioSource 컴포넌트 가져오기 또는 없으면 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // 데미지 받는 함수
@@ -35,6 +46,13 @@ public class Health : MonoBehaviour
             {
                 // 플레이어가 다쳤음
                 anim.SetTrigger("Hurt");
+
+                // 데미지 입는 소리 재생
+                if (damageSound != null)
+                {
+                    audioSource.PlayOneShot(damageSound);
+                }
+
                 StartCoroutine(Invulnerability());  // 무적 상태 시작
             }
             else

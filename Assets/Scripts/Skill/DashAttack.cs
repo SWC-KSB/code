@@ -9,6 +9,8 @@ public class PlayerDashAttack : MonoBehaviour
     public float dashCooldown = 1f;       // 대쉬 쿨타임
     public float attackRange = 1f;        // 공격 범위
     public int attackDamage = 10;         // 공격 데미지
+    public AudioClip dashSound;           // 대쉬 효과음 추가
+    public AudioClip attackSound;         // 공격 효과음 추가
 
     private Rigidbody2D rb;
     private bool isDashing = false;
@@ -18,12 +20,18 @@ public class PlayerDashAttack : MonoBehaviour
     private Animator animator;            // 애니메이터 추가
     public GameObject Player;
     PlayerMovement PlayerMovement;
+    private AudioSource audioSource;      // AudioSource 변수 추가
 
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();  // 애니메이터 컴포넌트 가져오기
+        audioSource = GetComponent<AudioSource>(); // AudioSource 컴포넌트 가져오기
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();  // AudioSource가 없으면 추가
+        }
     }
 
     private void Update()
@@ -57,6 +65,12 @@ public class PlayerDashAttack : MonoBehaviour
 
         // 대쉬 시작 애니메이션 트리거 발동
         animator.SetTrigger("DashAttack");
+
+        // 대쉬 효과음 재생
+        if (dashSound != null)
+        {
+            audioSource.PlayOneShot(dashSound);
+        }
 
         isDashing = true;
         dashTime = dashDuration;
@@ -114,6 +128,12 @@ public class PlayerDashAttack : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(attackDamage);
+
+                    // 공격 효과음 재생
+                    if (attackSound != null)
+                    {
+                        audioSource.PlayOneShot(attackSound);
+                    }
                 }
                 else if (bossStateMachine != null)
                 {
