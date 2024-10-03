@@ -51,7 +51,7 @@ public class BossStateMachine : MonoBehaviour
     public AudioClip BreakSound;
     public AudioClip DashSound;
     public AudioClip MakePlatformSound;
-    public AudioClip BossLaugh;
+    public AudioClip BossLaughSound;
     private AudioSource audioSource;    // 오디오 소스 컴포넌트
 
     [Header("Hit Effect")]

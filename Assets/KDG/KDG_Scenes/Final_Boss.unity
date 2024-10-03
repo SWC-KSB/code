@@ -2517,6 +2517,7 @@ MonoBehaviour:
   BreakSound: {fileID: 8300000, guid: 2087e3a60fc7a704683f45c0fb8f1827, type: 3}
   DashSound: {fileID: 8300000, guid: 474d7775e442562418d72b372ea5c106, type: 3}
   MakePlatformSound: {fileID: 8300000, guid: 47ad04b670e37c949a07e9b8bbbca1af, type: 3}
+  BossLaughSound: {fileID: 8300000, guid: 630a5a048f92b334c80625786432f09e, type: 3}
   numberOfFlashes: 3
   flashDuration: 0.1
   bossAttackPrefab: {fileID: 2891653376649870057, guid: 0b129aec37028f64a8737aaf92d00112, type: 3}
