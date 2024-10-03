@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6618fe17e77a7a489987bcfef1944a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img_Skill_2: {fileID: 1707977456}
+  img_Skill_2: {fileID: 919643417}
 --- !u!114 &1651750848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ad332266641ba4e97e9e3f20ae3524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img_Skill_1: {fileID: 919643417}
+  img_Skill_1: {fileID: 1707977456}
 --- !u!61 &1651750849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2553,7 +2553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116746684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ba42af9275a0514c981cc47f758641b, type: 3}
   m_Name: 

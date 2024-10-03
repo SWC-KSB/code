@@ -10,6 +10,18 @@ public class HackingAttackPrefab : MonoBehaviour
     private float nextAttackTime = 0f; // 다음 공격이 가능한 시간
 
     public Animator animator; // 애니메이터 컴포넌트 (선택 사항)
+    public AudioClip hackingAttackSound; // 공격 효과음 추가
+    private AudioSource audioSource; // 오디오 소스 컴포넌트 추가
+
+    private void Start()
+    {
+        // AudioSource 컴포넌트 가져오기 또는 없으면 추가
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
 
     void Update()
     {
@@ -27,6 +39,12 @@ public class HackingAttackPrefab : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("HackingAttack");
+        }
+
+        // 공격 효과음 재생
+        if (hackingAttackSound != null)
+        {
+            audioSource.PlayOneShot(hackingAttackSound);
         }
 
         // "Enemy" 태그를 가진 모든 적 오브젝트를 찾음
@@ -52,9 +70,14 @@ public class HackingAttackPrefab : MonoBehaviour
             {
                 // 적에게 데미지를 가하기
                 Enemy_Health enemyHealth = enemy.GetComponent<Enemy_Health>();
+                BossStateMachine bossStateMachine = enemy.GetComponent<BossStateMachine>();
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(damage);
+                }
+                else if (bossStateMachine != null)
+                {
+                    bossStateMachine.TakeDamage(damage); // BossStateMachine에게 데미지를 가하기
                 }
             }
         }

@@ -44,6 +44,9 @@ public class Middle_Boss_Mix : MonoBehaviour
         attackMoveDirection.Normalize();
         enemyRB = GetComponent<Rigidbody2D>();
         currentState = BossState.Idle; // 초기 상태를 Idle로 설정
+
+        player = GameObject.FindWithTag("Player").transform;
+
     }
 
     void Update()
