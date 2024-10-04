@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public enum BossState
@@ -886,6 +887,8 @@ private void Start()
     {
         Debug.Log("Boss has died.");
         StartCoroutine(FadeOutAndDestroy());
+
+
     }
 
     private IEnumerator FadeOutAndDestroy()
@@ -913,5 +916,9 @@ private void Start()
 
         // 게임 오브젝트 제거
         Destroy(gameObject);
+
+        SceneManager.LoadScene("end");
+
+        
     }
 }
